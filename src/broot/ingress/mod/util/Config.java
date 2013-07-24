@@ -8,6 +8,7 @@ import java.util.List;
 public class Config {
 
     public static boolean deployHighest;
+    public static boolean swapTouchMenuButtons;
 
     public static ItemsTab itemsTab;
     public static boolean showOrigItemsTab;
@@ -30,6 +31,7 @@ public class Config {
     public static boolean simplifyInventoryItems;
     public static int chatTimeFormat;
     public static boolean vibration;
+    public static boolean keepScreenOn;
 
     public static UiVariant uiVariant;
 
@@ -37,6 +39,7 @@ public class Config {
         SharedPreferences prefs = Mod.app.getSharedPreferences("mod", 0);
 
         deployHighest = prefs.getBoolean("deployHighest", false);
+        swapTouchMenuButtons = prefs.getBoolean("swapTouchMenuButtons", false);
 
         itemsTab = ItemsTab.valueOf(prefs.getString("itemsTab", "HIDDEN"));
         showOrigItemsTab = prefs.getBoolean("showOrigItemsTab", true);
@@ -59,6 +62,7 @@ public class Config {
         simplifyInventoryItems = prefs.getBoolean("simplifyInventoryItems", false);
         chatTimeFormat = prefs.getInt("chatTimeFormat", 0);
         vibration = prefs.getBoolean("vibration", true);
+        keepScreenOn = prefs.getBoolean("keepScreenOn", false);
 
         uiVariant = UiVariant.byName.get(prefs.getString("uiVariant", "auto"));
         if (uiVariant == null) {
@@ -72,6 +76,7 @@ public class Config {
         SharedPreferences.Editor e = Mod.app.getSharedPreferences("mod", 0).edit();
 
         e.putBoolean("deployHighest", deployHighest);
+        e.putBoolean("swapTouchMenuButtons", swapTouchMenuButtons);
 
         e.putString("itemsTab", itemsTab.toString());
         e.putBoolean("showOrigItemsTab", showOrigItemsTab);
@@ -94,6 +99,7 @@ public class Config {
         e.putBoolean("simplifyInventoryItems", simplifyInventoryItems);
         e.putInt("chatTimeFormat", chatTimeFormat);
         e.putBoolean("vibration", vibration);
+        e.putBoolean("keepScreenOn", keepScreenOn);
 
         e.putString("uiVariant", uiVariant.name);
 
