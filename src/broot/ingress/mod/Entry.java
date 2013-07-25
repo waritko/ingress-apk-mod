@@ -2,6 +2,7 @@ package broot.ingress.mod;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.PowerManager;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import broot.ingress.mod.util.Config;
@@ -36,8 +37,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import android.os.PowerManager;
-
 public class Entry {
 
     private static Label portalInfoDistLabel;
@@ -45,9 +44,6 @@ public class Entry {
     private static SimpleDateFormat tf12 = new SimpleDateFormat("h:mma");
     private static SimpleDateFormat tf24 = new SimpleDateFormat("HH:mm:ss");
     private static SimpleDateFormat tf24ns = new SimpleDateFormat("HH:mm");
-
-    private static PowerManager.WakeLock wl;
-    private static boolean wakeLockActive;
 
     static {
         Mod.init();
@@ -61,28 +57,27 @@ public class Entry {
     }
 
     public static void NemesisActivity_onOnCreate(NemesisActivity activity) {
+        PowerManager pm;
         Mod.nemesisActivity = activity;
         Mod.updateFullscreenMode();
-        if (Config.keepScreenOn) {
-            PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
-            wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
-            wakeLockActive = true;
-
-        } else {
-            wakeLockActive = false;
-        }
-        
+        pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+        Mod.ksoWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "Ingress - Keep Screen ON");
+        Mod.updateKeepScreenOn();
     }
 
     public static void NemesisActivity_onOnPause(NemesisActivity activity) {
-        if (wakeLockActive) {
-            wl.release();
+        if (Config.keepScreenOn) {
+            if (Mod.ksoWakeLock.isHeld()) {
+                Mod.ksoWakeLock.release();
+            }
         }
     }
 
     public static void NemesisActivity_onOnResume(NemesisActivity activity) {
-        if (wakeLockActive) {
-            wl.acquire();
+        if (Config.keepScreenOn) {
+            if (!Mod.ksoWakeLock.isHeld()) {
+                Mod.ksoWakeLock.acquire();
+            }
         }
     }
 
