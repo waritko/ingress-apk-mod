@@ -161,12 +161,12 @@ public class ModItemsActivity extends BaseSubActivity {
     private void updateLabels() {
         for (List<Button> buttons : buttonsByLvl.values()) {
             for (Button btn : buttons) {
-                btn.button.setText("0");
+                btn.button.setText("-");
             }
         }
         for (Map<ItemRarity, Button> buttons : buttonsByRarity.values()) {
             for (Button btn : buttons.values()) {
-                btn.button.setText("0");
+                btn.button.setText("-");
             }
         }
 
@@ -218,7 +218,7 @@ public class ModItemsActivity extends BaseSubActivity {
             }
         }
         for (int lvl = 0; lvl < 8; lvl++) {
-            buttonsByLvl.get(ItemType.MEDIA).get(lvl).button.setText(String.valueOf(media[lvl]));
+            buttonsByLvl.get(ItemType.MEDIA).get(lvl).button.setText(media[lvl]==0?"-":String.valueOf(media[lvl]));
         }
         sumLabel.setText("Number of all items: " + sum + " / 2000");
         keysLabel.setText("Keys:  " + keysNumber);
