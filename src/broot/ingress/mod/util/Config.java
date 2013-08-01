@@ -19,7 +19,7 @@ public class Config {
 
     public static boolean skipIntro;
     public static boolean scannerZoomInAnimEnabled;
-    public static boolean newHackAnimEnabled;
+    public static HackType hackType;
     public static boolean rotateInventoryItemsEnabled;
     public static boolean recycleAnimationsEnabled;
 
@@ -50,7 +50,7 @@ public class Config {
 
         skipIntro = prefs.getBoolean("skipIntro", false);
         scannerZoomInAnimEnabled = prefs.getBoolean("scannerZoomInAnimEnabled", true);
-        newHackAnimEnabled = prefs.getBoolean("newHackAnimEnabled", true);
+        hackType = HackType.valueOf(prefs.getString("hackType", "ANIMATED"));
         rotateInventoryItemsEnabled = prefs.getBoolean("rotateInventoryItemsEnabled", true);
         recycleAnimationsEnabled = prefs.getBoolean("recycleAnimationsEnabled", true);
 
@@ -87,7 +87,7 @@ public class Config {
 
         e.putBoolean("skipIntro", skipIntro);
         e.putBoolean("scannerZoomInAnimEnabled", scannerZoomInAnimEnabled);
-        e.putBoolean("newHackAnimEnabled", newHackAnimEnabled);
+        e.putString("hackType", hackType.toString());
         e.putBoolean("rotateInventoryItemsEnabled", rotateInventoryItemsEnabled);
         e.putBoolean("recycleAnimationsEnabled", recycleAnimationsEnabled);
 
@@ -115,6 +115,11 @@ public class Config {
         deployBehavior = DeployBehavior.values()[(deployBehavior.ordinal() + 1) % DeployBehavior.values().length];
         save();
     }
+    
+    public static void nextHackType() {
+        hackType = HackType.values()[(hackType.ordinal() + 1) % HackType.values().length];
+        save();
+    }
 
     public static void nextUiVariant() {
         List<UiVariant> variants = UiVariant.variants;
@@ -137,13 +142,26 @@ public class Config {
     
     public static enum DeployBehavior {
         MANUAL("Manual"),
-        HIGHEST("Highest"),
-        LOWEST("Lowest"),
+        HIGHEST("Highest first"),
+        LOWEST("Lowest first"),
         ;
 
         public final String desc;
 
         private DeployBehavior(String desc) {
+            this.desc = desc;
+        }
+    }
+    
+    public static enum HackType {
+        ANIMATED("Animated"),
+        FAST("Fast"),
+        SIMPLE("Simple"),
+        ;
+        
+        public final String desc;
+
+        private HackType(String desc) {
             this.desc = desc;
         }
     }
