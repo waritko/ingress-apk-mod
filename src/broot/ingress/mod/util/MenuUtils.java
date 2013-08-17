@@ -5,7 +5,7 @@ import broot.ingress.mod.ModItemsActivity;
 import com.nianticproject.ingress.common.device.DeviceActivity;
 import com.nianticproject.ingress.common.intel.IntelActivity;
 import com.nianticproject.ingress.common.inventory.ItemsActivity;
-import com.nianticproject.ingress.common.agent.AgentActivity;
+import com.nianticproject.ingress.common.playerprofile.MyProfileActivity;
 import com.nianticproject.ingress.common.mission.MissionListActivity;
 import com.nianticproject.ingress.common.recruit.RecruitActivity;
 import com.nianticproject.ingress.common.ui.widget.MenuTabId;
@@ -24,7 +24,7 @@ public class MenuUtils {
             tabs.add(MenuTabId.INVENTORY);
         }
 
-            tabs.add(MenuTabId.AGENT);
+        //tabs.add(MenuTabId.AGENT);
 
         if (Config.showIntelTab) {
             tabs.add(MenuTabId.INTEL);
@@ -54,7 +54,7 @@ public class MenuUtils {
             case INVENTORY:
                 return ItemsActivity.class;
             case AGENT:
-                return AgentActivity.class;
+                return MyProfileActivity.class;
             case INTEL:
                 return IntelActivity.class;
             case MISSIONS:
