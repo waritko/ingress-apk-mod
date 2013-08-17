@@ -45,6 +45,12 @@ def main():
     edit.add_invoke_entry('MenuController_onInit', edit.vars[0])
     edit.save()
 
+    edit = edit_cls('CollectItemsFromPortalCallBack')
+    edit.mod_field_def('portal', 'public');
+    edit.prepare_after_prologue('callback');
+    edit.add_invoke_entry('CollectItemsFromPortalCallBack_callback', 'p0, p1')
+    edit.save()
+
     edit = edit_cls('SubActivityManager')
     edit.mod_field_def('skin', 'public')
 
