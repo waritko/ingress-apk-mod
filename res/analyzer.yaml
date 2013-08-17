@@ -39,6 +39,8 @@ broot.ingress.mod.Entry:
     ItemActionHandler_recycleAnimationsEnabled: [null, Z]
     ShaderUtils_compileShader: [null, Lcom/badlogic/gdx/graphics/glutils/ShaderProgram;, $String, $String, $String]
 
+    CollectItemsFromPortalCallBack_callback: [null, V, $CollectItemsFromPortalCallBack, Lcom/nianticproject/ingress/shared/rpc/RpcResult;]
+
     getClientType: [null, $ClientType]
     getClientTypeForJackson: [null, $ClientType]
     shouldSkipIntro: [null, Z]
@@ -46,6 +48,35 @@ broot.ingress.mod.Entry:
     vibrationEnabled: [null, Z]
 
     CommsAdapter_getDateFormat: [null, $SimpleDateFormat]
+
+### UNKNOWN
+com.nianticproject.ingress.common.rpc.GameRpcTask_initRequest:
+  find_by_string: GameRpcTask\.initRequest
+
+com.nianticproject.ingress.common.unknown.UF:
+  find_interface_of: $GameRpcTask_initRequest
+
+### CALLBACK
+com.nianticproject.ingress.shared.rpc.RpcResult:
+  is_real_name: true
+
+  methods:
+    error: [e, Z]
+    getGameBasket: [d, Lcom/nianticproject/ingress/shared/rpc/GameBasket;]
+    getResult: [a, Ljava/lang/Object;]
+
+com.nianticproject.ingress.common.callback.CollectItemsFromPortalCallBack:
+  methods:
+    callback: [a, $UF, Lcom/nianticproject/ingress/shared/rpc/RpcResult;]
+
+  fields:
+    portal: [a, Lcom/nianticproject/ingress/gameentity/components/Portal;]
+    player: [b, $PlayerModel]
+
+  find:
+    - [by_method, false, true, callback, protected final]
+    - [by_field, false, true, portal]
+    - [by_field, false, true, player]
 
 ### MODEL
 
@@ -150,6 +181,9 @@ com.nianticproject.ingress.knobs.ClientFeatureKnobBundle:
 ### MISC
 
 com.nianticproject.ingress.common.json.JacksonInitializer:
+  fields:
+    objectMapper: [a, Lorg/codehaus/jackson/map/ObjectMapper;]
+
   find_by_string: 'Lorg/codehaus/jackson/map/ObjectMapper;->configure\('
 
 ### APP
