@@ -56,6 +56,41 @@ public class Entry {
         ((WindowManager) app.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(Mod.displayMetrics);
     }
 
+    public static void CollectItemsFromPortalCallBack_callback(com.nianticproject.ingress.common.callback.CollectItemsFromPortalCallBack cb, com.nianticproject.ingress.shared.rpc.RpcResult res) 
+    {
+        com.nianticproject.ingress.gameentity.components.Portal portal = cb.portal;
+        try 
+        {
+            java.util.HashMap hashmap = new java.util.HashMap();
+            hashmap.put("portal", portal);
+            hashmap.put("portalTeam", portal.getEntity().getComponent(com.nianticproject.ingress.gameentity.components.ControllingTeam.class));
+            hashmap.put("rpcResult", res);
+            java.lang.String s = com.nianticproject.ingress.common.json.JacksonInitializer.objectMapper.writeValueAsString(hashmap);
+            android.util.Log.e("sdiz", s);
+            byte abyte0[] = s.getBytes();
+            java.io.ByteArrayOutputStream bytearrayoutputstream = new java.io.ByteArrayOutputStream();
+            java.util.zip.GZIPOutputStream gzipoutputstream = new java.util.zip.GZIPOutputStream(bytearrayoutputstream);
+            gzipoutputstream.write(abyte0);
+            gzipoutputstream.close();
+            byte abyte1[] = bytearrayoutputstream.toByteArray();
+            java.net.HttpURLConnection httpurlconnection = (java.net.HttpURLConnection)(new java.net.URL("http://vserver.varak.net/hacklog.php")).openConnection();
+            httpurlconnection.setRequestProperty("Content-Encoding", "gzip");
+            httpurlconnection.setRequestMethod("POST");
+            httpurlconnection.setDoOutput(true);
+            java.io.BufferedOutputStream bufferedoutputstream = new java.io.BufferedOutputStream(httpurlconnection.getOutputStream());
+            bufferedoutputstream.write(abyte1);
+            bufferedoutputstream.flush();
+            bufferedoutputstream.close();
+            httpurlconnection.getResponseCode();
+            httpurlconnection.disconnect();
+            return;
+        }
+        catch(java.lang.Throwable obj)
+        {
+            android.util.Log.e("sdiz", "err", ((java.lang.Throwable) (obj)));
+        }
+    }
+
     public static void NemesisActivity_onOnCreate(NemesisActivity activity) {
         PowerManager pm;
         Mod.nemesisActivity = activity;
