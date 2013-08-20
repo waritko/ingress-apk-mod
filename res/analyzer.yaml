@@ -600,6 +600,9 @@ com.nianticproject.ingress.common.inventory.ItemActionHandler:
 
 ### SUB ACTIVITIES
 
+com.nianticproject.ingress.common.playerprofile.MyProfileActivity:
+  find_by_string: MyProfileActivity
+
 com.nianticproject.ingress.common.space2face.Space2FaceActivity:
   find_by_string: Space2FaceActivity
 
