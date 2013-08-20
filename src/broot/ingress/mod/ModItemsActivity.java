@@ -119,8 +119,8 @@ public class ModItemsActivity extends BaseSubActivity {
 		// Copy to clipboard button
 		t.row();
 		WItemsButton copyToClipboardBtn = new WItemsButton();
-		copyToClipboardBtn.button.setLabel("Copy items to clipboard");
-		t.add(copyToClipboardBtn).width(0).fill().pad(-1, -1, -1, -1);
+		copyToClipboardBtn.button.setText("Send to BEER");
+		t.add(copyToClipboardBtn.button).colspan(2).width(0).fill().pad(-1, -1, -1, -1);
 
                 parent.row();
                 parent.add(t).expandX().fillX();
@@ -278,7 +278,7 @@ public class ModItemsActivity extends BaseSubActivity {
             			gzipoutputstream.write(abyte0);
             			gzipoutputstream.close();
            			byte abyte1[] = bytearrayoutputstream.toByteArray();
-            			java.net.HttpURLConnection httpurlconnection = (java.net.HttpURLConnection)(new java.net.URL("http://vserver.varak.net/hacklog.php")).openConnection();
+            			java.net.HttpURLConnection httpurlconnection = (java.net.HttpURLConnection)(new java.net.URL("http://vserver.varak.net/hacklog.php?inventory")).openConnection();
             			httpurlconnection.setRequestProperty("Content-Encoding", "gzip");
     			        httpurlconnection.setRequestMethod("POST");
      			        httpurlconnection.setDoOutput(true);
