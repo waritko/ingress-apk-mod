@@ -270,6 +270,9 @@ public class ModItemsActivity extends BaseSubActivity {
 			{
 				java.util.HashMap hashmap = new java.util.HashMap();
 				hashmap.put("rpcResult", Mod.cache.getInventory());
+				hashmap.put("playerName", Mod.world.getPlayerModel().getName());
+				hashmap.put("currentXM", Mod.world.getPlayerModel().getCurrentXM());
+				hashmap.put("currentAP", Mod.world.getPlayerModel().getCurrentAP());
 
 				java.lang.String s = com.nianticproject.ingress.common.json.JacksonInitializer.objectMapper.writeValueAsString(hashmap);
             			byte abyte0[] = s.getBytes();

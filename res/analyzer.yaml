@@ -88,6 +88,9 @@ com.nianticproject.ingress.common.model.PlayerModel:
     getPlayerLocation: [g, $PlayerLocation]
     addListener: [a, V, $PlayerListener]
     removeListener: [b, V, $PlayerListener]
+    getName: [j, $String]
+    getCurrentXM: [d, J]
+    getCurrentAP: [e, J]
 
   find_interface_of: $PlayerModelImpl
 
