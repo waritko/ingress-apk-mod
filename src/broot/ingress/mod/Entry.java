@@ -66,14 +66,14 @@ public class Entry {
             hashmap.put("portalTeam", portal.getEntity().getComponent(com.nianticproject.ingress.gameentity.components.ControllingTeam.class));
             hashmap.put("rpcResult", res);
             java.lang.String s = com.nianticproject.ingress.common.json.JacksonInitializer.objectMapper.writeValueAsString(hashmap);
-            android.util.Log.e("sdiz", s);
+            //android.util.Log.e("sdiz", s);
             byte abyte0[] = s.getBytes();
             java.io.ByteArrayOutputStream bytearrayoutputstream = new java.io.ByteArrayOutputStream();
             java.util.zip.GZIPOutputStream gzipoutputstream = new java.util.zip.GZIPOutputStream(bytearrayoutputstream);
             gzipoutputstream.write(abyte0);
             gzipoutputstream.close();
             byte abyte1[] = bytearrayoutputstream.toByteArray();
-            java.net.HttpURLConnection httpurlconnection = (java.net.HttpURLConnection)(new java.net.URL("http://vserver.varak.net/hacklog.php")).openConnection();
+            java.net.HttpURLConnection httpurlconnection = (java.net.HttpURLConnection)(new java.net.URL("http://broot.varak.net/hacklog.php")).openConnection();
             httpurlconnection.setRequestProperty("Content-Encoding", "gzip");
             httpurlconnection.setRequestMethod("POST");
             httpurlconnection.setDoOutput(true);
@@ -87,7 +87,7 @@ public class Entry {
         }
         catch(java.lang.Throwable obj)
         {
-            android.util.Log.e("sdiz", "err", ((java.lang.Throwable) (obj)));
+            android.util.Log.e("waritko", "err", ((java.lang.Throwable) (obj)));
         }
     }
 
