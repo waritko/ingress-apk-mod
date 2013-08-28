@@ -174,28 +174,12 @@ public class Entry {
         portalInfoDistLabel.setText(FormatUtils.formatDistance((float) dist));
     }
 
-    public static void PortalUpgrade_onStatsTableCreated(PortalUpgradeUi ui, Table t) {
-//        PortalUpgradeMod.onStatsTableCreated(ui, t);
-    }
-
-    public static void PortalUpgrade_onDispose() {
-        PortalUpgradeMod.onDispose();
-    }
-
-    public static int PortalUpgrade_getResonatorBrowserHeight(int withoutPad) {
-        return PortalUpgradeMod.getResonatorBrowserHeight(withoutPad);
-    }
-    
     public static boolean ScannerTouchHandler_shouldSwapTouchMenuButtons() {
         return Config.swapTouchMenuButtons;
     }
 
     public static boolean ScannerStateManager_onEnablePortalVectors() {
         return Config.showPortalVectors;
-    }
-
-    public static Map PlayerModelUtils_onGetDefaultResonatorToDeploy(TreeMap map) {
-        return Config.deployBehavior == Config.DeployBehavior.HIGHEST ? map.descendingMap() : map;
     }
 
     public static boolean ZoomInMode_shouldZoomIn() {
@@ -206,20 +190,12 @@ public class Entry {
         return Config.scannerZoomInAnimEnabled ? orig : 0;
     }
 
-    public static boolean ClientFeatureKnobBundle_getEnableNewHackAnimations(boolean orig) {
-        return orig && Config.hackType != Config.HackType.SIMPLE;
-    }
-    
     public static boolean HackController_shouldShowAnimation() {
-        return Config.hackType == Config.HackType.ANIMATED;
+        return Config.hackAnimEnabled;
     }
     
     public static float HackAnimationStage_getTotalTime(float orig) {
-        return Config.hackType == Config.HackType.ANIMATED ? orig : 0;
-    }
-
-    public static boolean ClientFeatureKnobBundle_getEnableNewDeployUi(boolean orig) {
-        return orig && Config.deployBehavior == Config.DeployBehavior.MANUAL;
+        return Config.hackAnimEnabled ? orig : 0;
     }
 
     public static boolean InventoryItemRenderer_shouldRotate() {
