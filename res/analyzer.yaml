@@ -39,7 +39,7 @@ broot.ingress.mod.Entry:
     ItemActionHandler_recycleAnimationsEnabled: [null, Z]
     ShaderUtils_compileShader: [null, Lcom/badlogic/gdx/graphics/glutils/ShaderProgram;, $String, $String, $String]
 
-    CollectItemsFromPortalCallBack_callback: [null, V, $CollectItemsFromPortalCallBack, Lcom/nianticproject/ingress/shared/rpc/RpcResult;]
+#    CollectItemsFromPortalCallBack_callback: [null, V, $CollectItemsFromPortalCallBack, Lcom/nianticproject/ingress/shared/rpc/RpcResult;]
 
     getClientType: [null, $ClientType]
     getClientTypeForJackson: [null, $ClientType]
@@ -65,18 +65,18 @@ com.nianticproject.ingress.shared.rpc.RpcResult:
     getGameBasket: [d, Lcom/nianticproject/ingress/shared/rpc/GameBasket;]
     getResult: [a, Ljava/lang/Object;]
 
-com.nianticproject.ingress.common.callback.CollectItemsFromPortalCallBack:
-  methods:
-    callback: [a, $UF, Lcom/nianticproject/ingress/shared/rpc/RpcResult;]
-
-  fields:
-    portal: [a, Lcom/nianticproject/ingress/gameentity/components/Portal;]
-    player: [b, $PlayerModel]
-
-  find:
-    - [by_method, false, true, callback, protected final]
-    - [by_field, false, true, portal]
-    - [by_field, false, true, player]
+#com.nianticproject.ingress.common.callback.CollectItemsFromPortalCallBack:
+#  methods:
+#    callback: [a, $UF, Lcom/nianticproject/ingress/shared/rpc/RpcResult;]
+#
+#  fields:
+#    portal: [a, Lcom/nianticproject/ingress/gameentity/components/Portal;]
+#    player: [b, $PlayerModel]
+#
+#  find:
+#    - [by_method, false, true, callback, protected final]
+#    - [by_field, false, true, portal]
+#    - [by_field, false, true, player]
 
 ### MODEL
 
