@@ -39,13 +39,6 @@ public class AboutModActivity extends BaseSubActivity {
                 menuItemsTable.top().pad(10);
 
                 gameplayTweaksItem = new ListItem(skin, "Gameplay tweaks", null);
-                gameplayTweaksItem.addButton("Deployment type", "", new ClickListener() {
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        Config.nextDeployBehavior();
-                        updateGameplayTweaksValues(true);
-                    }
-                });
                 gameplayTweaksItem.addButton("TARGET and FIRE", "", new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -91,6 +84,13 @@ public class AboutModActivity extends BaseSubActivity {
                         updateTabsValues(true);
                     }
                 });
+                tabsItem.addButton("PASSCODE", "Show", new ClickListener() {
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        Config.showPasscodeTab = !Config.showPasscodeTab;
+                        updateTabsValues(true);
+                    }
+                });
                 tabsItem.addButton("DEVICE", "Show", new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -115,10 +115,10 @@ public class AboutModActivity extends BaseSubActivity {
                         updateAnimsValues(true);
                     }
                 });
-                animsItem.addButton("Hacking type", "", new ClickListener() {
+                animsItem.addButton("Hacking", "", new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
-                        Config.nextHackType();
+                        Config.hackAnimEnabled = !Config.hackAnimEnabled;
                         updateAnimsValues(true);
                     }
                 });
@@ -261,8 +261,7 @@ public class AboutModActivity extends BaseSubActivity {
         if (save) {
             Config.save();
         }
-        gameplayTweaksItem.buttons.get(0).setText(Config.deployBehavior.desc);
-        gameplayTweaksItem.buttons.get(1).setText(Config.swapTouchMenuButtons ? "Swap" : "Leave");
+        gameplayTweaksItem.buttons.get(0).setText(Config.swapTouchMenuButtons ? "Swap" : "Leave");
     }
 
     private void updateTabsValues(boolean save) {
@@ -274,7 +273,8 @@ public class AboutModActivity extends BaseSubActivity {
         tabsItem.buttons.get(2).setText(Config.showIntelTab ? "Show" : "Hide");
         tabsItem.buttons.get(3).setText(Config.showMissionTab ? "Show" : "Hide");
         tabsItem.buttons.get(4).setText(Config.showRecruitTab ? "Show" : "Hide");
-        tabsItem.buttons.get(5).setText(Config.showDeviceTab ? "Show" : "Hide");
+        tabsItem.buttons.get(5).setText(Config.showPasscodeTab ? "Show" : "Hide");
+        tabsItem.buttons.get(6).setText(Config.showDeviceTab ? "Show" : "Hide");
         topWidget.createTabs();
     }
 
@@ -284,7 +284,7 @@ public class AboutModActivity extends BaseSubActivity {
         }
 //        animsItem.buttons.get(0).setText(!Config.skipIntro ? "ON" : "OFF");
         animsItem.buttons.get(0).setText(Config.scannerZoomInAnimEnabled ? "ON" : "OFF");
-        animsItem.buttons.get(1).setText(Config.hackType.desc);
+        animsItem.buttons.get(1).setText(Config.hackAnimEnabled ? "ON" : "OFF");
         animsItem.buttons.get(2).setText(Config.rotateInventoryItemsEnabled ? "ON" : "OFF");
         animsItem.buttons.get(3).setText(Config.recycleAnimationsEnabled ? "ON" : "OFF");
     }
