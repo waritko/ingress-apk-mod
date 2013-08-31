@@ -37,8 +37,10 @@ public class MenuUtils {
             tabs.add(MenuTabId.RECRUIT);
         }
 
-        tabs.add(MenuTabId.PASSCODE);
-
+        if (Config.showPasscodeTab) {
+        	tabs.add(MenuTabId.PASSCODE);
+        }
+        
         if (Config.showDeviceTab) {
             tabs.add(MenuTabId.DEVICE);
         }
