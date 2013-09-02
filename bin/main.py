@@ -213,6 +213,15 @@ def main():
     edit.prepare_to_insert_before()
     edit.add_invoke_entry('XmParticleRender_getTimeSec', 'v1', 'v1')
     edit.save()
+    
+    #disable shield animation
+    edit = edit_cls('ShieldShader')
+    edit.find_line(r' const-string/jumbo v2, "u_rampTargetInvWidth"')
+    edit.find_line(r' .*Lcom/badlogic/gdx/graphics/glutils/ShaderProgram;->setUniformf.*', where='down')
+    edit.prepare_to_insert_before()
+    edit.add_invoke_entry('ShieldShader_getRampTargetInvWidthX', 'v0', 'v0')
+    edit.add_invoke_entry('ShieldShader_getRampTargetInvWidthY', 'v3', 'v3')
+    edit.save()
 
     #stop inventory item rotation
     edit = edit_cls('InventoryItemRenderer')

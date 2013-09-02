@@ -213,6 +213,14 @@ public class Entry {
     public static float XmParticleRender_getTimeSec(float orig) {
         return Config.xmFlowEnabled ? orig : 0;
     }
+    
+    public static float ShieldShader_getRampTargetInvWidthX(float orig) {
+    	return Config.shieldAnimEnabled ? orig : 0;
+    }
+    
+    public static float ShieldShader_getRampTargetInvWidthY(float orig) {
+    	return Config.shieldAnimEnabled ? orig : 1;
+    }
 
     public static ClientType getClientType() {
         return ClientType.DEVELOPMENT;
