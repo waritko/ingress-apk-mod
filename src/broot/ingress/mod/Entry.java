@@ -209,6 +209,10 @@ public class Entry {
     public static ShaderProgram ShaderUtils_compileShader(String vertex, String frag, String name) {
         return new ShaderProgram(vertex, frag);
     }
+    
+    public static float XmParticleRender_getTimeSec(float orig) {
+        return Config.xmFlowEnabled ? orig : 0;
+    }
 
     public static ClientType getClientType() {
         return ClientType.DEVELOPMENT;

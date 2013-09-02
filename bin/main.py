@@ -206,6 +206,13 @@ def main():
     edit.add_invoke_entry('HackAnimationStage_getTotalTime', edit.vars[0], edit.vars[0])
     edit.save()
 
+    #disable xm flow
+    edit = edit_cls('XmParticleRender')
+    edit.find_line(r' const-string/jumbo v0, "u_timeSec"')
+    edit.find_line(r' .*Lcom/badlogic/gdx/graphics/glutils/ShaderProgram;->setUniformf.*', where='down')
+    edit.prepare_to_insert_before()
+    edit.add_invoke_entry('XmParticleRender_getTimeSec', 'v1', 'v1')
+    edit.save()
 
     #stop inventory item rotation
     edit = edit_cls('InventoryItemRenderer')

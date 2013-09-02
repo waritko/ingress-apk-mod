@@ -30,6 +30,7 @@ broot.ingress.mod.Entry:
 #    PortalUpgrade_onStatsTableCreated: [null, V, $PortalUpgradeUi, $Table]
     PortalUpgrade_onDispose: [null, V]
     PortalUpgrade_getResonatorBrowserHeight: [null, I, I]
+    XmParticleRender_getTimeSec: [null, F, F]
     HackAnimationStage_getTotalTime: [null, F, F]
     HackController_shouldShowAnimation: [null, Z]
     ClientFeatureKnobBundle_getEnableNewHackAnimations: [null, Z, Z]
@@ -399,6 +400,9 @@ com.nianticproject.ingress.common.scanner.visuals.PortalParticleRender:
 #    toggle: [b, V]
 #
 #  find_by_string: '"EnergyGlobVisuals.draw"'
+
+com.nianticproject.ingress.common.scanner.visuals.XmParticleRender:
+  find_by_string: '"Particle XM Render"'
 
 com.nianticproject.ingress.common.scanner.visuals.ScannerDestinationVisuals:
   find_by_string: "CLEAR"
