@@ -23,6 +23,7 @@ public class Config {
     public static boolean rotateInventoryItemsEnabled;
     public static boolean recycleAnimationsEnabled;
     public static boolean xmFlowEnabled;
+    public static boolean shieldAnimEnabled;
 
     public static boolean fullscreen;
     public static boolean showPortalVectors;
@@ -55,6 +56,7 @@ public class Config {
         rotateInventoryItemsEnabled = prefs.getBoolean("rotateInventoryItemsEnabled", true);
         recycleAnimationsEnabled = prefs.getBoolean("recycleAnimationsEnabled", true);
         xmFlowEnabled = prefs.getBoolean("xmFlowEnabled", true);
+        shieldAnimEnabled = prefs.getBoolean("shieldAnimEnabled", true);
 
         fullscreen = prefs.getBoolean("fullscreen", false);
         showPortalVectors = prefs.getBoolean("showPortalVectors", true);
@@ -93,6 +95,7 @@ public class Config {
         e.putBoolean("rotateInventoryItemsEnabled", rotateInventoryItemsEnabled);
         e.putBoolean("recycleAnimationsEnabled", recycleAnimationsEnabled);
         e.putBoolean("xmFlowEnabled", xmFlowEnabled);
+        e.putBoolean("shieldAnimEnabled", shieldAnimEnabled);
 
         e.putBoolean("fullscreen", fullscreen);
         e.putBoolean("showPortalVectors", showPortalVectors);
