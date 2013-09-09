@@ -75,20 +75,23 @@ public class ModItemsActivity extends BaseSubActivity {
                 t.add(new Label("C", skin));
                 t.add(new Label("M", skin));
 
-                for (int lvl = 0; lvl < 8; lvl++) {
-                    Color color = FormatUtils.getColorForLevel(skin, lvl + 1);
+                for (int lvl = 0; lvl < 9; lvl++) {
+                    Color color = (lvl<8) ? FormatUtils.getColorForLevel(skin, lvl+1) : Color.WHITE;
 
                     t.row().height(40 * den);
 
-                    Label label1 = new Label("L" + (lvl + 1), skin);
+                    Label label1 = new Label( (lvl<8) ? ("L" + (lvl + 1)) : "Total" , skin);
                     label1.setColor(color);
                     t.add(label1).pad(-1, 0, -1, 16 * den);
 
-                    for (ItemType type : new ItemType[]{ItemType.EMITTER_A, ItemType.EMP_BURSTER, ItemType.ULTRA_STRIKE,
-                            ItemType.POWER_CUBE, ItemType.MEDIA}) {
+                    for (ItemType type : new ItemType[]{ItemType.EMITTER_A,
+                                                        ItemType.EMP_BURSTER,
+                                                        ItemType.ULTRA_STRIKE,
+                                                        ItemType.POWER_CUBE,
+                                                        ItemType.MEDIA}) {
                         List<Button> buttons = buttonsByLvl.get(type);
                         if (buttons == null) {
-                            buttons = new ArrayList<Button>(8);
+                            buttons = new ArrayList<Button>(9); // 8 + Total row
                             buttonsByLvl.put(type, buttons);
                         }
                         Button btn = new Button();
@@ -102,12 +105,20 @@ public class ModItemsActivity extends BaseSubActivity {
                 t.add().height(16 * den);
 
                 addRarityRows(t, skin,
-                        new String[]{"Shields", "Heat Sink", "Multi-hack"},
-                        new Object[]{ItemType.RES_SHIELD, ItemType.HEATSINK, ItemType.MULTIHACK},
+                        new String[]{"Shields"},
+                        new Object[]{ItemType.RES_SHIELD},
                         new ItemRarity[]{ItemRarity.COMMON, ItemRarity.RARE, ItemRarity.VERY_RARE});
                 addRarityRows(t, skin,
-                        new String[]{"Force Amp", "Link Amp", "Turret"},
-                        new Object[]{ItemType.FORCE_AMP, ItemType.LINK_AMPLIFIER, ItemType.TURRET},
+                        new String[]{"Link Amp"},
+                        new Object[]{ItemType.LINK_AMPLIFIER},
+                        new ItemRarity[]{ItemRarity.RARE});
+                addRarityRows(t, skin,
+                        new String[]{"Heat Sink", "Multi-hack"},
+                        new Object[]{ItemType.HEATSINK, ItemType.MULTIHACK},
+                        new ItemRarity[]{ItemRarity.COMMON, ItemRarity.RARE, ItemRarity.VERY_RARE});
+                addRarityRows(t, skin,
+                        new String[]{"Force Amp", "Turret"},
+                        new Object[]{ItemType.FORCE_AMP, ItemType.TURRET},
                         new ItemRarity[]{ItemRarity.RARE});
                 addRarityRows(t, skin,
                         new String[]{"ADA Refactor", "JARVIS Virus"},
@@ -177,10 +188,14 @@ public class ModItemsActivity extends BaseSubActivity {
         }
 
         int sum = 0;
+        int resoCnt, xmpCnt, ultraCnt, cubeCnt, mediaCnt;
+        boolean itemHandled;
         int keysNumber = 0;
         int media[] = new int[8];
         for (IndistinguishableItems items : IndistinguishableItems.fromItemsByPlayerInfo(null, Mod.cache.getInventory())) {
-            sum += items.getCount();
+            itemHandled = false;
+            int count = items.getCount();
+            sum += count;
             int lvl = items.getLevel() - 1;
 
             ItemType type = items.getType();
@@ -191,16 +206,29 @@ public class ModItemsActivity extends BaseSubActivity {
                     if (curr == 0) {
                         buttonsByLvl.get(type).get(lvl).entity = items.getEntity();
                     }
-                    media[lvl] += items.getCount();
+                    media[lvl] += count;
+                    mediaCnt += count;
                     continue;
                 case EMITTER_A:
+                    resoCnt += count;
+                    itemHandled = true;
                 case EMP_BURSTER:
+                    if (!itemHandled) {
+                        xmpCnt += count;
+                        itemHandled = true;
+                    }
                 case ULTRA_STRIKE:
+                    if (!itemHandled) {
+                        ultraCnt += count;
+                        itemHandled = true;
+                    }
                 case POWER_CUBE:
+                    if (!itemHandled)
+                        cubeCnt += count;
                     btn = buttonsByLvl.get(type).get(lvl);
                     break;
                 case PORTAL_LINK_KEY:
-                    keysNumber += items.getCount();
+                    keysNumber += count;
                     continue;
                 case RES_SHIELD:
                 case FORCE_AMP:
@@ -220,14 +248,19 @@ public class ModItemsActivity extends BaseSubActivity {
             }
 
             if (btn != null) {
-                btn.button.setText(String.valueOf(items.getCount()));
+                btn.button.setText(String.valueOf(count));
                 btn.entity = items.getEntity();
             }
         }
         for (int lvl = 0; lvl < 8; lvl++) {
             buttonsByLvl.get(ItemType.MEDIA).get(lvl).button.setText(media[lvl]==0?"-":String.valueOf(media[lvl]));
         }
-        sumLabel.setText("Number of all items: " + sum + " / 2000");
+        buttonsByLvl.get(ItemType.EMITTER_A).get(8).button.setText(String.valueOf(resoCnt));
+        buttonsByLvl.get(ItemType.EMP_BURSTER).get(8).button.setText(String.valueOf(xmpCnt));
+        buttonsByLvl.get(ItemType.ULTRA_STRIKE).get(8).button.setText(String.valueOf(ultraCnt));
+        buttonsByLvl.get(ItemType.POWER_CUBE).get(8).button.setText(String.valueOf(cubeCnt));
+        buttonsByLvl.get(ItemType.MEDIA).get(8).button.setText(String.valueOf(mediaCnt));
+        sumLabel.setText("Total items: " + sum + " / 2000");
         keysLabel.setText("Keys:  " + keysNumber);
     }
 
