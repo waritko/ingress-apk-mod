@@ -183,7 +183,11 @@ public class ModItemsActivity extends BaseSubActivity {
         }
 
         int sum = 0;
-        int resoCnt, xmpCnt, ultraCnt, cubeCnt, mediaCnt;
+        int resoCnt = 0;
+        int xmpCnt = 0;
+        int ultraCnt = 0;
+        int cubeCnt = 0;
+        int mediaCnt = 0;
         boolean itemHandled;
         int keysNumber = 0;
         int media[] = new int[8];
