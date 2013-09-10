@@ -109,13 +109,13 @@ public class ModItemsActivity extends BaseSubActivity {
                         new Object[]{ItemType.RES_SHIELD},
                         new ItemRarity[]{ItemRarity.COMMON, ItemRarity.RARE, ItemRarity.VERY_RARE});
                 addRarityRows(t, skin,
-                        new String[]{"Link Amp"},
-                        new Object[]{ItemType.LINK_AMPLIFIER},
-                        new ItemRarity[]{ItemRarity.RARE});
-                addRarityRows(t, skin,
                         new String[]{"Heat Sink", "Multi-hack"},
                         new Object[]{ItemType.HEATSINK, ItemType.MULTIHACK},
                         new ItemRarity[]{ItemRarity.COMMON, ItemRarity.RARE, ItemRarity.VERY_RARE});
+                addRarityRows(t, skin,
+                        new String[]{"Link Amp"},
+                        new Object[]{ItemType.LINK_AMPLIFIER},
+                        new ItemRarity[]{ItemRarity.RARE});
                 addRarityRows(t, skin,
                         new String[]{"Force Amp", "Turret"},
                         new Object[]{ItemType.FORCE_AMP, ItemType.TURRET},
