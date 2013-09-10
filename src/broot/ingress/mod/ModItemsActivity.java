@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ModItemsActivity extends BaseSubActivity {
 
-
+    private static final int LEVEL_COUNT = 8;
     private TextButton.TextButtonStyle defaultClearStyle;
 
     private MenuTopWidget topWidget;
@@ -75,12 +75,12 @@ public class ModItemsActivity extends BaseSubActivity {
                 t.add(new Label("C", skin));
                 t.add(new Label("M", skin));
 
-                for (int lvl = 0; lvl < 9; lvl++) {
-                    Color color = (lvl<8) ? FormatUtils.getColorForLevel(skin, lvl+1) : Color.WHITE;
+                for (int lvl = 0; lvl < LEVEL_COUNT + 1; lvl++) {
+                    Color color = (lvl < LEVEL_COUNT) ? FormatUtils.getColorForLevel(skin, lvl + 1) : Color.WHITE;
 
                     t.row().height(40 * den);
 
-                    Label label1 = new Label( (lvl<8) ? ("L" + (lvl + 1)) : "Total" , skin);
+                    Label label1 = new Label((lvl < LEVEL_COUNT) ? ("L" + (lvl + 1)) : "Total" , skin);
                     label1.setColor(color);
                     t.add(label1).pad(-1, 0, -1, 16 * den);
 
@@ -91,7 +91,7 @@ public class ModItemsActivity extends BaseSubActivity {
                                                         ItemType.MEDIA}) {
                         List<Button> buttons = buttonsByLvl.get(type);
                         if (buttons == null) {
-                            buttons = new ArrayList<Button>(9); // 8 + Total row
+                            buttons = new ArrayList<Button>();
                             buttonsByLvl.put(type, buttons);
                         }
                         Button btn = new Button();
@@ -173,12 +173,12 @@ public class ModItemsActivity extends BaseSubActivity {
     private void updateLabels() {
         for (List<Button> buttons : buttonsByLvl.values()) {
             for (Button btn : buttons) {
-                btn.button.setText("-");
+                btn.button.setText(formatValue(0));
             }
         }
         for (Map<ItemRarity, Button> buttons : buttonsByRarity.values()) {
             for (Button btn : buttons.values()) {
-                btn.button.setText("-");
+                btn.button.setText(formatValue(0));
             }
         }
 
@@ -190,7 +190,7 @@ public class ModItemsActivity extends BaseSubActivity {
         int mediaCnt = 0;
         boolean itemHandled;
         int keysNumber = 0;
-        int media[] = new int[8];
+        int media[] = new int[LEVEL_COUNT];
         for (IndistinguishableItems items : IndistinguishableItems.fromItemsByPlayerInfo(null, Mod.cache.getInventory())) {
             itemHandled = false;
             int count = items.getCount();
@@ -247,20 +247,24 @@ public class ModItemsActivity extends BaseSubActivity {
             }
 
             if (btn != null) {
-                btn.button.setText(String.valueOf(count));
+                btn.button.setText(formatValue(count));
                 btn.entity = items.getEntity();
             }
         }
-        for (int lvl = 0; lvl < 8; lvl++) {
-            buttonsByLvl.get(ItemType.MEDIA).get(lvl).button.setText(media[lvl]==0?"-":String.valueOf(media[lvl]));
+        for (int lvl = 0; lvl < LEVEL_COUNT; lvl++) {
+            buttonsByLvl.get(ItemType.MEDIA).get(lvl).button.setText(formatValue(media[lvl]));
         }
-        buttonsByLvl.get(ItemType.EMITTER_A).get(8).button.setText(String.valueOf(resoCnt));
-        buttonsByLvl.get(ItemType.EMP_BURSTER).get(8).button.setText(String.valueOf(xmpCnt));
-        buttonsByLvl.get(ItemType.ULTRA_STRIKE).get(8).button.setText(String.valueOf(ultraCnt));
-        buttonsByLvl.get(ItemType.POWER_CUBE).get(8).button.setText(String.valueOf(cubeCnt));
-        buttonsByLvl.get(ItemType.MEDIA).get(8).button.setText(String.valueOf(mediaCnt));
+        buttonsByLvl.get(ItemType.EMITTER_A).get(LEVEL_COUNT).button.setText(formatValue(resoCnt));
+        buttonsByLvl.get(ItemType.EMP_BURSTER).get(LEVEL_COUNT).button.setText(formatValue(xmpCnt));
+        buttonsByLvl.get(ItemType.ULTRA_STRIKE).get(LEVEL_COUNT).button.setText(formatValue(ultraCnt));
+        buttonsByLvl.get(ItemType.POWER_CUBE).get(LEVEL_COUNT).button.setText(formatValue(cubeCnt));
+        buttonsByLvl.get(ItemType.MEDIA).get(LEVEL_COUNT).button.setText(formatValue(mediaCnt));
         sumLabel.setText("Total items: " + sum + " / 2000");
         keysLabel.setText("Keys:  " + keysNumber);
+    }
+
+    private static String formatValue(int value) {
+        return value == 0 ? "-" : String.valueOf(value);
     }
 
     @Override
