@@ -259,7 +259,9 @@ public class ModItemsActivity extends BaseSubActivity {
         buttonsByLvl.get(ItemType.ULTRA_STRIKE).get(LEVEL_COUNT).button.setText(formatValue(ultraCnt));
         buttonsByLvl.get(ItemType.POWER_CUBE).get(LEVEL_COUNT).button.setText(formatValue(cubeCnt));
         buttonsByLvl.get(ItemType.MEDIA).get(LEVEL_COUNT).button.setText(formatValue(mediaCnt));
-        sumLabel.setText("Total items: " + sum + " / 2000");
+        
+        long xm = Mod.world.getPlayerModel().getCurrentXM();
+        sumLabel.setText("Items: " + sum + ", XM: " + xm);
         keysLabel.setText("Keys:  " + keysNumber);
     }
 
