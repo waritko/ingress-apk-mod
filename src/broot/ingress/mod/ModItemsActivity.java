@@ -109,13 +109,13 @@ public class ModItemsActivity extends BaseSubActivity {
                         new Object[]{ItemType.RES_SHIELD},
                         new ItemRarity[]{ItemRarity.COMMON, ItemRarity.RARE, ItemRarity.VERY_RARE});
                 addRarityRows(t, skin,
-                        new String[]{"Link Amp"},
-                        new Object[]{ItemType.LINK_AMPLIFIER},
-                        new ItemRarity[]{ItemRarity.RARE});
-                addRarityRows(t, skin,
                         new String[]{"Heat Sink", "Multi-hack"},
                         new Object[]{ItemType.HEATSINK, ItemType.MULTIHACK},
                         new ItemRarity[]{ItemRarity.COMMON, ItemRarity.RARE, ItemRarity.VERY_RARE});
+                addRarityRows(t, skin,
+                        new String[]{"Link Amp"},
+                        new Object[]{ItemType.LINK_AMPLIFIER},
+                        new ItemRarity[]{ItemRarity.RARE});
                 addRarityRows(t, skin,
                         new String[]{"Force Amp", "Turret"},
                         new Object[]{ItemType.FORCE_AMP, ItemType.TURRET},
@@ -264,12 +264,14 @@ public class ModItemsActivity extends BaseSubActivity {
         buttonsByLvl.get(ItemType.ULTRA_STRIKE).get(LEVEL_COUNT).button.setText(formatValue(ultraCnt));
         buttonsByLvl.get(ItemType.POWER_CUBE).get(LEVEL_COUNT).button.setText(formatValue(cubeCnt));
         buttonsByLvl.get(ItemType.MEDIA).get(LEVEL_COUNT).button.setText(formatValue(mediaCnt));
-        sumLabel.setText("Total items: " + sum + " / 2000");
+        
+        long xm = Mod.world.getPlayerModel().getCurrentXM();
+        sumLabel.setText(String.format("Items: %,d; XM: %,d", sum, xm));
         keysLabel.setText("Keys:  " + keysNumber);
     }
 
     private static String formatValue(int value) {
-        return value == 0 ? "-" : String.valueOf(value);
+        return value == 0 ? "-" : String.format("%,d", value);
     }
 
     @Override
