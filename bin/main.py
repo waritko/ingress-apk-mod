@@ -300,5 +300,27 @@ def main():
     edit.add_line(' :noswap')
     edit.save()
 
+    #change format for AP and XM
+    edit = edit_cls('CommPlayerListener')
+    edit.find_line(r'(.+)%d XM(.+)$')
+    edit.replace_in_line('%d', '%,d')
+    edit.find_line(r'(.+)%d AP(.+)$')
+    edit.replace_in_line('%d', '%,d')
+    edit.save()
+
+    edit = edit_cls('StatusBar')
+    edit.find_line(r'(.+)\+%d AP(.+)$')
+    edit.replace_in_line('%d', '%,d')
+    edit.find_line(r'(.+)%d AP(.+)$')
+    edit.replace_in_line('%d', '%,d')
+    edit.find_line(r'(.+)%d XM(.+)$')
+    edit.replace_in_line('%d', '%,d')
+    edit.save()
+
+    edit = edit_cls('PlayerProfileTable')
+    edit.find_line(r' const-string/jumbo v3, "%d %s"')
+    edit.replace_in_line('%d', '%,d')
+    edit.save()
+
 if __name__ == '__main__':
     main()
