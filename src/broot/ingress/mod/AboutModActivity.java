@@ -56,7 +56,7 @@ public class AboutModActivity extends BaseSubActivity {
                         updateTabsValues(false);
                     }
                 });
-                tabsItem.addButton("ITEMS", "Show", new ClickListener() {
+                tabsItem.addButton("INVENTORY", "Show", new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         Config.showOrigItemsTab = !Config.showOrigItemsTab;
