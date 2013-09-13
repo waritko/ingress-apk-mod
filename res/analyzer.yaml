@@ -382,8 +382,8 @@ com.nianticproject.ingress.common.ui.widget.MenuTopWidget:
 
   find_by_string: ops-scroll-indicator-left
 
-com.nianticproject.ingress.common.ui.widget.MenuScrollLabel:
-  find_by_super: Lcom/nianticproject/ingress/common/ui/widget/ScrollLabel;
+#com.nianticproject.ingress.common.ui.widget.MenuScrollLabel:
+#  find_by_super: Lcom/nianticproject/ingress/common/ui/widget/ScrollLabel;
 
 ### SCANNER
 
@@ -472,7 +472,7 @@ com.nianticproject.ingress.common.ui.elements.PortalInfoDialog:
   super: $UiLayer
 
   fields:
-    portalComponent: [s, Lcom/nianticproject/ingress/gameentity/components/Portal;]
+    portalComponent: [r, Lcom/nianticproject/ingress/gameentity/components/Portal;]
 
   methods:
     onPlayerLocationChanged: [l, V]
