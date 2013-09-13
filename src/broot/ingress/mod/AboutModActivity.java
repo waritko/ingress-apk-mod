@@ -206,6 +206,14 @@ public class AboutModActivity extends BaseSubActivity {
                         restartItem.descLabel.setText("Restart is recommended");
                     }
                 });
+                uiTweaksItem.addButton("Alerts-Tab in COMM", "", new ClickListener() {
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        Config.commAlertsTab = !Config.commAlertsTab;
+                        updateUiTweaksValues(true);
+                        restartItem.descLabel.setText("Restart is recommended");
+                    }
+                });
                 uiTweaksItem.addButton("Vibrate", "", new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -337,8 +345,9 @@ public class AboutModActivity extends BaseSubActivity {
             default:  timeFormatLabel = "00:00"; break;
         }
         uiTweaksItem.buttons.get(5).setText(timeFormatLabel);
-        uiTweaksItem.buttons.get(6).setText(Config.vibration ? "ON" : "OFF");
-        uiTweaksItem.buttons.get(7).setText(Config.keepScreenOn ? "ON" : "OFF");
+        uiTweaksItem.buttons.get(6).setText(Config.commAlertsTab ? "ON" : "OFF");
+        uiTweaksItem.buttons.get(7).setText(Config.vibration ? "ON" : "OFF");
+        uiTweaksItem.buttons.get(8).setText(Config.keepScreenOn ? "ON" : "OFF");
         switch (Config.gpsLockTime) {
             case 0: gpsLockLabel = "Disabled"; break;
             case 30000: gpsLockLabel = "30sec"; break;
@@ -349,7 +358,7 @@ public class AboutModActivity extends BaseSubActivity {
             case 900000: gpsLockLabel = "15min"; break;
             default: gpsLockLabel = "Unknown";
         }
-        uiTweaksItem.buttons.get(8).setText(gpsLockLabel);
+        uiTweaksItem.buttons.get(9).setText(gpsLockLabel);
     }
 
     private void updateUiVariantValue() {

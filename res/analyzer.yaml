@@ -38,6 +38,7 @@ broot.ingress.mod.Entry:
     HackController_shouldShowAnimation: [null, Z]
     ClientFeatureKnobBundle_getEnableNewHackAnimations: [null, Z, Z]
     ClientFeatureKnobBundle_getEnableNewDeployUi: [null, Z, Z]
+    ClientFeatureKnobBundle_getEnableCommsAlertsTab: [null, Z, Z]
     InventoryItemRenderer_shouldRotate: [null, Z]
     InventoryItemRenderer_simplifyItems: [null, Z]
     ItemActionHandler_recycleAnimationsEnabled: [null, Z]
@@ -151,6 +152,7 @@ com.nianticproject.ingress.knobs.ClientFeatureKnobBundle:
   fields:
     enableNewHackAnimations: [enableNewHackAnimations, Z]
     enableNewDeployUi: [enableNewDeployUi, Z]
+    enableCommsAlertsTab: [enableCommsAlertsTab, Z]
 
   is_real_name: true
 

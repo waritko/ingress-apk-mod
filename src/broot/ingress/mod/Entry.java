@@ -228,6 +228,10 @@ public class Entry {
     	return Config.shieldAnimEnabled ? orig : 1;
     }
 
+    public static boolean ClientFeatureKnobBundle_getEnableCommsAlertsTab(boolean orig) {
+        return Config.commAlertsTab || orig;
+    }
+
     public static ClientType getClientType() {
         return ClientType.DEVELOPMENT;
     }

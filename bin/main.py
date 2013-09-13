@@ -182,14 +182,17 @@ def main():
 #    edit.save()
 
 
-#    edit = edit_cls('ClientFeatureKnobBundle')
+    edit = edit_cls('ClientFeatureKnobBundle')
+    edit.find_line(r' iget-boolean v0, p0, %s' % expr('$ClientFeatureKnobBundle->enableCommsAlertsTab'))
+    edit.prepare_to_insert()
+    edit.add_invoke_entry('ClientFeatureKnobBundle_getEnableCommsAlertsTab', 'v0', 'v0')
 #    edit.find_line(r' iget-boolean ([pv]\d+), p0, %s' % expr('$ClientFeatureKnobBundle->enableNewHackAnimations'))
 #    edit.prepare_to_insert()
 #    edit.add_invoke_entry('ClientFeatureKnobBundle_getEnableNewHackAnimations', edit.vars[0], edit.vars[0])
 #    edit.find_line(r' iget-boolean ([pv]\d+), p0, %s' % expr('$ClientFeatureKnobBundle->enableNewDeployUi'))
 #    edit.prepare_to_insert()
 #    edit.add_invoke_entry('ClientFeatureKnobBundle_getEnableNewDeployUi', edit.vars[0], edit.vars[0])
-#    edit.save()
+    edit.save()
 
     edit = edit_cls('HackController')
     edit.find_line(r' const-string/jumbo v1, " acquired"')
