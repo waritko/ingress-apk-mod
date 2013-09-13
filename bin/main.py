@@ -222,11 +222,11 @@ def main():
     
     #disable shield animation
     edit = edit_cls('ShieldShader')
-    edit.find_line(r' const-string/jumbo v2, "u_rampTargetInvWidth"')
+    edit.find_line(r' const-string/jumbo ([pv]\d+), "u_rampTargetInvWidth"')
     edit.find_line(r' .*Lcom/badlogic/gdx/graphics/glutils/ShaderProgram;->setUniformf.*', where='down')
     edit.prepare_to_insert_before()
     edit.add_invoke_entry('ShieldShader_getRampTargetInvWidthX', 'v0', 'v0')
-    edit.add_invoke_entry('ShieldShader_getRampTargetInvWidthY', 'v3', 'v3')
+    edit.add_invoke_entry('ShieldShader_getRampTargetInvWidthY', 'v4', 'v4')
     edit.save()
 
     #stop inventory item rotation
