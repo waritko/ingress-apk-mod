@@ -285,6 +285,16 @@ def main():
     edit.add_line(' :lbl_vibration_disabled')
     edit.save()
 
+    # change gps lock timeout
+    edit = edit_cls('GpsSensor')
+    edit.find_line(' .*Landroid/os/Handler;->postDelayed.*')
+    edit.prepare_to_insert_before()
+    # edit.add_invoke_entry seems not to support move-result-wide 
+    # (64bit-numbers), doing it manually then
+    edit.add_line(' invoke-static {}, Lbroot/ingress/mod/Entry;->GpsSensor_lockTimeout()J')
+    edit.add_line(' move-result-wide v2')
+    edit.save()
+
     #change order of buttons in round menu
     edit = edit_cls('ScannerTouchHandler')
     edit.find_line(' invoke-direct/range \{v0 \.\. v7\}, (.+)$')

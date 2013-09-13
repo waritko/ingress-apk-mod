@@ -176,6 +176,10 @@ public class Entry {
         portalInfoDistLabel.setText(FormatUtils.formatDistance((float) dist));
     }
 
+    public static long GpsSensor_lockTimeout() {
+        return Config.gpsLockTime;
+    }
+
     public static boolean ScannerTouchHandler_shouldSwapTouchMenuButtons() {
         return Config.swapTouchMenuButtons;
     }

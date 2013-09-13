@@ -28,6 +28,7 @@ broot.ingress.mod.Entry:
     ZoomInMode_shouldZoomIn: [null, Z]
     PortalInfoDialog_getOpenDelay: [null, F, F]
 #    PortalUpgrade_onStatsTableCreated: [null, V, $PortalUpgradeUi, $Table]
+    GpsSensor_lockTimeout: [null, J]
     PortalUpgrade_onDispose: [null, V]
     PortalUpgrade_getResonatorBrowserHeight: [null, I, I]
     XmParticleRender_getTimeSec: [null, F, F]
@@ -157,6 +158,9 @@ com.nianticproject.ingress.knobs.ClientFeatureKnobBundle:
 
 com.nianticproject.ingress.common.json.JacksonInitializer:
   find_by_string: 'Lorg/codehaus/jackson/map/ObjectMapper;->configure\('
+
+com.nianticproject.ingress.sensors.GpsSensor:
+  find_by_string: 'could not request GPS updates'
 
 ### APP
 

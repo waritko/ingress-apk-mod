@@ -33,6 +33,7 @@ public class Config {
     public static boolean scannerObjectsEnabled;
     public static boolean simplifyInventoryItems;
     public static int chatTimeFormat;
+    public static int gpsLockTime;
     public static boolean vibration;
     public static boolean keepScreenOn;
 
@@ -66,6 +67,7 @@ public class Config {
         xmGlobsEnabled = prefs.getBoolean("xmGlobsEnabled", true);
         scannerObjectsEnabled = prefs.getBoolean("scannerObjectsEnabled", true);
         simplifyInventoryItems = prefs.getBoolean("simplifyInventoryItems", false);
+        gpsLockTime = prefs.getInt("gpsLockTime", 120000);
         chatTimeFormat = prefs.getInt("chatTimeFormat", 0);
         vibration = prefs.getBoolean("vibration", true);
         keepScreenOn = prefs.getBoolean("keepScreenOn", false);
@@ -106,6 +108,7 @@ public class Config {
         e.putBoolean("xmGlobsEnabled", xmGlobsEnabled);
         e.putBoolean("scannerObjectsEnabled", scannerObjectsEnabled);
         e.putBoolean("simplifyInventoryItems", simplifyInventoryItems);
+        e.putInt("gpsLockTime", gpsLockTime);
         e.putInt("chatTimeFormat", chatTimeFormat);
         e.putBoolean("vibration", vibration);
         e.putBoolean("keepScreenOn", keepScreenOn);
@@ -124,6 +127,18 @@ public class Config {
         List<UiVariant> variants = UiVariant.variants;
         uiVariant = variants.get((variants.indexOf(uiVariant) + 1) % variants.size());
         save();
+    }
+
+    public static void nextGpsLockTime() {
+        switch (gpsLockTime) {
+            case 0: gpsLockTime = 30000; break;
+            case 30000: gpsLockTime = 60000; break;
+            case 60000: gpsLockTime = 120000; break;
+            case 120000: gpsLockTime = 300000; break;
+            case 300000: gpsLockTime = 600000; break;
+            case 600000: gpsLockTime = 900000; break;
+            case 900000: gpsLockTime = 0;
+        }
     }
 
     public static enum ItemsTab {

@@ -221,6 +221,14 @@ public class AboutModActivity extends BaseSubActivity {
                         Mod.updateKeepScreenOn();
                     }
                 });
+                uiTweaksItem.addButton("Keep GPS on", "", new ClickListener() {
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        Config.nextGpsLockTime();
+                        updateUiTweaksValues(true);
+                        Mod.updateKeepScreenOn();
+                    }
+                });
                 addItem(uiTweaksItem);
 
                 addItem(uiVariantItem = new ListItem(skin, "UI variant", "", "Toggle", new ClickListener() {
@@ -314,7 +322,7 @@ public class AboutModActivity extends BaseSubActivity {
     }
 
     private void updateUiTweaksValues(boolean save) {
-        String timeFormatLabel;
+        String timeFormatLabel, gpsLockLabel;
         if (save) {
             Config.save();
         }
@@ -331,6 +339,17 @@ public class AboutModActivity extends BaseSubActivity {
         uiTweaksItem.buttons.get(5).setText(timeFormatLabel);
         uiTweaksItem.buttons.get(6).setText(Config.vibration ? "ON" : "OFF");
         uiTweaksItem.buttons.get(7).setText(Config.keepScreenOn ? "ON" : "OFF");
+        switch (Config.gpsLockTime) {
+            case 0: gpsLockLabel = "Disabled"; break;
+            case 30000: gpsLockLabel = "30sec"; break;
+            case 60000: gpsLockLabel = "1min"; break;
+            case 120000: gpsLockLabel = "2min"; break;
+            case 300000: gpsLockLabel = "5min"; break;
+            case 600000: gpsLockLabel = "10min"; break;
+            case 900000: gpsLockLabel = "15min"; break;
+            default: gpsLockLabel = "Unknown";
+        }
+        uiTweaksItem.buttons.get(8).setText(gpsLockLabel);
     }
 
     private void updateUiVariantValue() {
