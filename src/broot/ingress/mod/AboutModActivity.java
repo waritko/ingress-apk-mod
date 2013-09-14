@@ -70,17 +70,17 @@ public class AboutModActivity extends BaseSubActivity {
                         updateTabsValues(true);
                     }
                 });
+                tabsItem.addButton("MISSIONS", "Show", new ClickListener() {
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        Config.showMissionTab = !Config.showMissionTab;
+                        updateTabsValues(true);
+                    }
+                });
                 tabsItem.addButton("INTEL", "Show", new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         Config.showIntelTab = !Config.showIntelTab;
-                        updateTabsValues(true);
-                    }
-                });
-                tabsItem.addButton("MISSION", "Show", new ClickListener() {
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        Config.showMissionTab = !Config.showMissionTab;
                         updateTabsValues(true);
                     }
                 });
@@ -308,8 +308,8 @@ public class AboutModActivity extends BaseSubActivity {
         tabsItem.buttons.get(0).setText(Config.itemsTab.desc);
         tabsItem.buttons.get(1).setText(Config.showOrigItemsTab ? "Show" : "Hide");
         tabsItem.buttons.get(2).setText(Config.showAgentTab ? "Show" : "Hide");
-        tabsItem.buttons.get(3).setText(Config.showIntelTab ? "Show" : "Hide");
-        tabsItem.buttons.get(4).setText(Config.showMissionTab ? "Show" : "Hide");
+        tabsItem.buttons.get(3).setText(Config.showMissionTab ? "Show" : "Hide");
+        tabsItem.buttons.get(4).setText(Config.showIntelTab ? "Show" : "Hide");
         tabsItem.buttons.get(5).setText(Config.showRecruitTab ? "Show" : "Hide");
         tabsItem.buttons.get(6).setText(Config.showPasscodeTab ? "Show" : "Hide");
         tabsItem.buttons.get(7).setText(Config.showDeviceTab ? "Show" : "Hide");
