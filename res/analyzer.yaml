@@ -28,6 +28,7 @@ broot.ingress.mod.Entry:
     ZoomInMode_shouldZoomIn: [null, Z]
     PortalInfoDialog_getOpenDelay: [null, F, F]
 #    PortalUpgrade_onStatsTableCreated: [null, V, $PortalUpgradeUi, $Table]
+    GpsSensor_lockTimeout: [null, J]
     PortalUpgrade_onDispose: [null, V]
     PortalUpgrade_getResonatorBrowserHeight: [null, I, I]
     XmParticleRender_getTimeSec: [null, F, F]
@@ -37,6 +38,7 @@ broot.ingress.mod.Entry:
     HackController_shouldShowAnimation: [null, Z]
     ClientFeatureKnobBundle_getEnableNewHackAnimations: [null, Z, Z]
     ClientFeatureKnobBundle_getEnableNewDeployUi: [null, Z, Z]
+    ClientFeatureKnobBundle_getEnableCommsAlertsTab: [null, Z, Z]
     InventoryItemRenderer_shouldRotate: [null, Z]
     InventoryItemRenderer_simplifyItems: [null, Z]
     ItemActionHandler_recycleAnimationsEnabled: [null, Z]
@@ -181,6 +183,7 @@ com.nianticproject.ingress.knobs.ClientFeatureKnobBundle:
   fields:
     enableNewHackAnimations: [enableNewHackAnimations, Z]
     enableNewDeployUi: [enableNewDeployUi, Z]
+    enableCommsAlertsTab: [enableCommsAlertsTab, Z]
 
   is_real_name: true
 
@@ -191,6 +194,9 @@ com.nianticproject.ingress.common.json.JacksonInitializer:
     objectMapper: [a, Lorg/codehaus/jackson/map/ObjectMapper;]
 
   find_by_string: 'Lorg/codehaus/jackson/map/ObjectMapper;->configure\('
+
+com.nianticproject.ingress.sensors.GpsSensor:
+  find_by_string: 'could not request GPS updates'
 
 ### APP
 

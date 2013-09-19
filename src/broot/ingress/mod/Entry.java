@@ -211,6 +211,10 @@ public class Entry {
         portalInfoDistLabel.setText(FormatUtils.formatDistance((float) dist));
     }
 
+    public static long GpsSensor_lockTimeout() {
+        return Config.gpsLockTime;
+    }
+
     public static boolean ScannerTouchHandler_shouldSwapTouchMenuButtons() {
         return Config.swapTouchMenuButtons;
     }
@@ -257,6 +261,10 @@ public class Entry {
     
     public static float ShieldShader_getRampTargetInvWidthY(float orig) {
     	return Config.shieldAnimEnabled ? orig : 1;
+    }
+
+    public static boolean ClientFeatureKnobBundle_getEnableCommsAlertsTab(boolean orig) {
+        return Config.commAlertsTab || orig;
     }
 
     public static ClientType getClientType() {

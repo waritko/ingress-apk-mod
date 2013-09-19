@@ -188,14 +188,17 @@ def main():
 #    edit.save()
 
 
-#    edit = edit_cls('ClientFeatureKnobBundle')
+    edit = edit_cls('ClientFeatureKnobBundle')
+    edit.find_line(r' iget-boolean v0, p0, %s' % expr('$ClientFeatureKnobBundle->enableCommsAlertsTab'))
+    edit.prepare_to_insert()
+    edit.add_invoke_entry('ClientFeatureKnobBundle_getEnableCommsAlertsTab', 'v0', 'v0')
 #    edit.find_line(r' iget-boolean ([pv]\d+), p0, %s' % expr('$ClientFeatureKnobBundle->enableNewHackAnimations'))
 #    edit.prepare_to_insert()
 #    edit.add_invoke_entry('ClientFeatureKnobBundle_getEnableNewHackAnimations', edit.vars[0], edit.vars[0])
 #    edit.find_line(r' iget-boolean ([pv]\d+), p0, %s' % expr('$ClientFeatureKnobBundle->enableNewDeployUi'))
 #    edit.prepare_to_insert()
 #    edit.add_invoke_entry('ClientFeatureKnobBundle_getEnableNewDeployUi', edit.vars[0], edit.vars[0])
-#    edit.save()
+    edit.save()
 
     edit = edit_cls('HackController')
     edit.find_line(r' const-string/jumbo v1, " acquired"')
@@ -289,6 +292,13 @@ def main():
     edit.add_line(' if-eqz v3, :lbl_vibration_disabled')
     edit.curr += 2;
     edit.add_line(' :lbl_vibration_disabled')
+    edit.save()
+
+    # change gps lock timeout
+    edit = edit_cls('GpsSensor')
+    edit.find_line(' .*Landroid/os/Handler;->postDelayed.*')
+    edit.prepare_to_insert_before()
+    edit.add_invoke_entry('GpsSensor_lockTimeout', ret='v2')
     edit.save()
 
     #change order of buttons in round menu
