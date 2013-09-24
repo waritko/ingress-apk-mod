@@ -255,6 +255,10 @@ public class Entry {
         return Config.recycleAnimationsEnabled;
     }
 
+    public static boolean Mod_ShowAgentTab() {
+        return Config.showAgentTab;
+    }
+
     public static boolean vibrationEnabled() {
         return Config.vibration;
     }

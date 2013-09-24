@@ -92,7 +92,13 @@ def main():
     edit.add_invoke_entry('MenuShowBtn_onClick')
     edit.add_line(' move-result-object %s' % edit.vars[0])
     edit.save()
-
+    
+    edit = edit_cls('AvatarPlayerStatusBar_AvatarListener')
+    edit.prepare_after_prologue('clicked')
+    edit.add_invoke_entry('Mod_ShowAgentTab', '', 'v0')
+    edit.add_ret_if_result(False)
+    edit.save()
+    
     edit = edit_cls('AssetFinder')
     edit.find_line(r' const-string/jumbo v\d+, "\{"')
     edit.find_prologue(where="up")

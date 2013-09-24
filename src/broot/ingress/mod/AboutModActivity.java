@@ -356,8 +356,8 @@ public class AboutModActivity extends BaseSubActivity {
             case 900000: gpsLockLabel = "15min"; break;
             default: gpsLockLabel = "Unknown";
         }
-        uiTweaksItem.buttons.get(9).setText(gpsLockLabel);
-        uiTweaksItem.buttons.get(10).setText(Config.changePortalInfoDialog ? "ON" : "OFF");
+        uiTweaksItem.buttons.get(8).setText(gpsLockLabel);
+        uiTweaksItem.buttons.get(9).setText(Config.changePortalInfoDialog ? "ON" : "OFF");
     }
 
     private void updateUiVariantValue() {
