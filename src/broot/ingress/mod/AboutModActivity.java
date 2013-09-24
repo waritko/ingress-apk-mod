@@ -229,6 +229,13 @@ public class AboutModActivity extends BaseSubActivity {
                         Mod.updateKeepScreenOn();
                     }
                 });
+                uiTweaksItem.addButton("Modify portal info", "", new ClickListener() {
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        Config.changePortalInfoDialog = !Config.changePortalInfoDialog;
+                        updateUiTweaksValues(true);
+                    }
+                });
                 addItem(uiTweaksItem);
 
                 addItem(uiVariantItem = new ListItem(skin, "UI variant", "", "Toggle", new ClickListener() {
@@ -350,6 +357,7 @@ public class AboutModActivity extends BaseSubActivity {
             default: gpsLockLabel = "Unknown";
         }
         uiTweaksItem.buttons.get(9).setText(gpsLockLabel);
+        uiTweaksItem.buttons.get(10).setText(Config.changePortalInfoDialog ? "ON" : "OFF");
     }
 
     private void updateUiVariantValue() {
