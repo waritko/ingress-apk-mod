@@ -36,7 +36,6 @@ public class Config {
     public static int gpsLockTime;
     public static boolean vibration;
     public static boolean keepScreenOn;
-    public static boolean commAlertsTab;
     public static boolean changePortalInfoDialog;
 
     public static UiVariant uiVariant;
@@ -73,7 +72,6 @@ public class Config {
         chatTimeFormat = prefs.getInt("chatTimeFormat", 0);
         vibration = prefs.getBoolean("vibration", true);
         keepScreenOn = prefs.getBoolean("keepScreenOn", false);
-        commAlertsTab = prefs.getBoolean("commAlertsTab", false);
         changePortalInfoDialog = prefs.getBoolean("changePortalInfoDialog", true);
 
         uiVariant = UiVariant.byName.get(prefs.getString("uiVariant", "auto"));
@@ -116,7 +114,6 @@ public class Config {
         e.putInt("chatTimeFormat", chatTimeFormat);
         e.putBoolean("vibration", vibration);
         e.putBoolean("keepScreenOn", keepScreenOn);
-        e.putBoolean("commAlertsTab", commAlertsTab);
         e.putBoolean("changePortalInfoDialog", changePortalInfoDialog);
 
         e.putString("uiVariant", uiVariant.name);

@@ -270,10 +270,6 @@ public class Entry {
     	return Config.shieldAnimEnabled ? orig : 1;
     }
 
-    public static boolean ClientFeatureKnobBundle_getEnableCommsAlertsTab(boolean orig) {
-        return Config.commAlertsTab || orig;
-    }
-
     public static ClientType getClientType() {
         return ClientType.DEVELOPMENT;
     }
@@ -292,6 +288,10 @@ public class Entry {
 
     public static boolean ItemActionHandler_recycleAnimationsEnabled() {
         return Config.recycleAnimationsEnabled;
+    }
+
+    public static boolean Mod_ShowAgentTab() {
+        return Config.showAgentTab;
     }
 
     public static boolean vibrationEnabled() {
