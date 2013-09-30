@@ -49,6 +49,7 @@ broot.ingress.mod.Entry:
     shouldSkipIntro: [null, Z]
     shouldDrawScannerObject: [null, Z]
     vibrationEnabled: [null, Z]
+    isPrivacyEnabled: [null, Z]
 
     CommsAdapter_getDateFormat: [null, $SimpleDateFormat]
 
