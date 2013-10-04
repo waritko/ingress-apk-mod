@@ -298,6 +298,10 @@ public class Entry {
         return Config.vibration;
     }
 
+    public static boolean isPrivacyEnabled() {
+        return Config.isPrivacyOn;
+    }
+
     public static SimpleDateFormat CommsAdapter_getDateFormat() {
         switch (Config.chatTimeFormat) {
             case 0:  return tf12;
