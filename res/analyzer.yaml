@@ -32,7 +32,7 @@ broot.ingress.mod.Entry:
     GpsSensor_lockTimeout: [null, J]
     PortalUpgrade_onDispose: [null, V]
     PortalUpgrade_getResonatorBrowserHeight: [null, I, I]
-    XmParticleRender_getTimeSec: [null, F, F]
+    ParticleEnergyGlobVisuals_getTimeSec: [null, F, F]
     ShieldShader_getRampTargetInvWidthX: [null, F, F]
     ShieldShader_getRampTargetInvWidthY: [null, F, F]
     HackAnimationStage_getTotalTime: [null, F, F]
@@ -455,7 +455,7 @@ com.nianticproject.ingress.common.scanner.visuals.PortalParticleRender:
 #
 #  find_by_string: '"EnergyGlobVisuals.draw"'
 
-com.nianticproject.ingress.common.scanner.visuals.XmParticleRender:
+com.nianticproject.ingress.common.scanner.visuals.ParticleEnergyGlobVisuals:
   find_by_string: '"Particle XM Render"'
   
 com.nianticproject.ingress.common.scanner.visuals.shaders.ShieldShader:

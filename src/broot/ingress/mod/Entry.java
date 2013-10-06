@@ -235,7 +235,7 @@ public class Entry {
         return new ShaderProgram(vertex, frag);
     }
     
-    public static float XmParticleRender_getTimeSec(float orig) {
+    public static float ParticleEnergyGlobVisuals_getTimeSec(float orig) {
         return Config.xmFlowEnabled ? orig : 0;
     }
     
