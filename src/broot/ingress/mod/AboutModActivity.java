@@ -241,6 +241,8 @@ public class AboutModActivity extends BaseSubActivity {
                     public void clicked(InputEvent event, float x, float y) {
                         Config.enablePowerCubesRecycle = !Config.enablePowerCubesRecycle;
                         updateUiTweaksValues(true);
+                    }
+                });
                 uiTweaksItem.addButton("Privacy", "", new ClickListener() {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
