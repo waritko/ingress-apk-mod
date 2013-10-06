@@ -296,5 +296,27 @@ def main():
     edit.replace_in_line('%d', '%,d')
     edit.save()
 
+    # privacy
+    edit = edit_cls('AvatarPlayerStatusBar')
+    edit.find_line(' invoke-interface {v0, v1}, Lcom/nianticproject/ingress/common/model/l;->a\(Ljava/lang/String;\)V')
+    edit.prepare_to_insert_before()
+    edit.add_invoke_entry('isPrivacyEnabled', ret='v5')
+    edit.add_line(' if-eqz v5, :lbl_privacy_disabled')
+    edit.add_line(' const-string/jumbo v1, ""')
+    edit.add_line(' :lbl_privacy_disabled')
+    edit.save()
+
+
+    edit = edit_cls('PlayerProfileTable')
+    edit.find_line(' invoke-virtual {v0, p1}, Lcom/nianticproject/ingress/common/ui/widget/g;->setText\(Ljava/lang/CharSequence;\)V')
+    edit.replace_in_line('p1', 'v5')
+    edit.prepare_to_insert_before()
+    edit.add_line(' move-object v5, p1')
+    edit.add_invoke_entry('isPrivacyEnabled', ret='v6')
+    edit.add_line(' if-eqz v6, :lbl_privacy_disabled')
+    edit.add_line(' const-string/jumbo v5, ""')
+    edit.add_line(' :lbl_privacy_disabled')
+    edit.save()
+
 if __name__ == '__main__':
     main()
