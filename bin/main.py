@@ -279,20 +279,11 @@ def main():
     edit.add_line(' :noswap')
     edit.save()
 
-    #change format for AP and XM
+    #change format for AP and XM in COMM
     edit = edit_cls('CommPlayerListener')
     edit.find_line(r'(.+)%d XM(.+)$')
     edit.replace_in_line('%d', '%,d')
     edit.find_line(r'(.+)%d AP(.+)$')
-    edit.replace_in_line('%d', '%,d')
-    edit.save()
-
-    edit = edit_cls('OldPlayerStatusBar')
-    edit.find_line(r'(.+)\+%d AP(.+)$')
-    edit.replace_in_line('%d', '%,d')
-    edit.find_line(r'(.+)%d AP(.+)$')
-    edit.replace_in_line('%d', '%,d')
-    edit.find_line(r'(.+)%d XM(.+)$')
     edit.replace_in_line('%d', '%,d')
     edit.save()
 
