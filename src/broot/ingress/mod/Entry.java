@@ -173,6 +173,18 @@ public class Entry {
         t.add(portalInfoDistLabel = new Label("", style)).left().expandX();
     }
 
+    public static void PowerCubeDetailsUiCreator_onActionButtonsTableCreated(Table t) {
+        if (Config.enablePowerCubesRecycle) {
+            return;
+        }
+
+        List<Cell> cells = new ArrayList<Cell>(t.getCells());
+        t.clear();
+        t.add((Actor) cells.get(0).getWidget()).left().size(com.esotericsoftware.tablelayout.Value.percentWidth(0.29F), com.esotericsoftware.tablelayout.Value.percentWidth(0.12F));
+        t.add((Actor) cells.get(1).getWidget()).left().size(com.esotericsoftware.tablelayout.Value.percentWidth(0.29F), com.esotericsoftware.tablelayout.Value.percentWidth(0.12F));
+        t.row();
+    }
+
     public static void PortalInfoDialog_onPlayerLocationChanged() {
         if (!Config.changePortalInfoDialog) {
             return;

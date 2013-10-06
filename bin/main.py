@@ -205,6 +205,13 @@ def main():
     edit.prepare_to_insert()
     edit.add_line(' :skip_item_shader')
     edit.save()
+    
+    edit = edit_cls('PowerCubeDetailsUiCreator')
+    edit.find_method_def('addActionButtons')
+    edit.find_line(r' invoke-super .*', where='down')
+    edit.prepare_to_insert()
+    edit.add_invoke_entry('PowerCubeDetailsUiCreator_onActionButtonsTableCreated', 'p1')
+    edit.save()
 
     #modify shader code before compiling it
     edit = edit_cls('ShaderUtils')

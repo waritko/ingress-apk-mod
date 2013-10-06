@@ -22,6 +22,7 @@ broot.ingress.mod.Entry:
     Mod_ShowAgentTab: [null, Z]
     AssetFinder_onGetAssetPath: [null, Lcom/badlogic/gdx/files/FileHandle;, $String]
     PortalInfoDialog_onStatsTableCreated: [null, V, $PortalInfoDialog, $Table]
+    PowerCubeDetailsUiCreator_onActionButtonsTableCreated: [null, V, $Table]
     PortalInfoDialog_onPlayerLocationChanged: [null, V]
     ScannerStateManager_onEnablePortalVectors: [null, Z]
     PlayerModelUtils_onGetDefaultResonatorToDeploy: [null, Ljava/util/Map;, Ljava/util/TreeMap;]
@@ -609,6 +610,14 @@ com.nianticproject.ingress.common.inventory.ui.BaseItemDetailsUiCreator:
     - [by_string, false, true, '"DROP"']
     - [by_string, false, true, '"RECYCLE"']
 
+com.nianticproject.ingress.common.inventory.ui.PowerCubeDetailsUiCreator:
+  methods:
+    addActionButtons: [b, V, $Table, $Skin, $Stage]
+
+  find:
+    - [by_string, false, true, '" XM"']
+    - [by_string, false, true, '"USE"']
+
 com.nianticproject.ingress.common.inventory.ItemActionHandler:
   methods:
     drop: [a, V, $GameEntity]
@@ -663,6 +672,12 @@ com.nianticproject.ingress.ui.CommsAdapter:
     bindView: [a, V, $View, $Context, $Cursor]
 
   find_by_string: "MMM dd"
+
+com.nianticproject.ingress.content.CommsLoader:
+  find_by_string: "CommsLoader.deserializeNoneOnFail"
+
+com.nianticproject.ingress.content.CommsData:
+  find_by_string: "Massive plext in CommsData"
 
 ### FRAMEWORK
 android.view.View:
