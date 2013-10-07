@@ -45,12 +45,6 @@ def main():
     edit.add_invoke_entry('MenuController_onInit', edit.vars[0])
     edit.save()
 
-#    edit = edit_cls('CollectItemsFromPortalCallBack')
-#    edit.mod_field_def('portal', 'public');
-#    edit.prepare_after_prologue('callback');
-#    edit.add_invoke_entry('CollectItemsFromPortalCallBack_callback', 'p0, p1')
-#    edit.save()
-
     edit = edit_cls('SubActivityManager')
     edit.mod_field_def('skin', 'public')
     edit.prepare_after_prologue('init')
@@ -178,11 +172,11 @@ def main():
     edit.save()
 
     #disable xm flow
-    edit = edit_cls('XmParticleRender')
+    edit = edit_cls('ParticleEnergyGlobVisuals')
     edit.find_line(r' const-string/jumbo v0, "u_timeSec"')
     edit.find_line(r' .*Lcom/badlogic/gdx/graphics/glutils/ShaderProgram;->setUniformf.*', where='down')
     edit.prepare_to_insert_before()
-    edit.add_invoke_entry('XmParticleRender_getTimeSec', 'v1', 'v1')
+    edit.add_invoke_entry('ParticleEnergyGlobVisuals_getTimeSec', 'v1', 'v1')
     edit.save()
     
     #disable shield animation
@@ -210,6 +204,13 @@ def main():
     edit.find_line('.*Lcom/badlogic/gdx/graphics/glutils/ShaderProgram;->end.*', where='down')
     edit.prepare_to_insert()
     edit.add_line(' :skip_item_shader')
+    edit.save()
+    
+    edit = edit_cls('PowerCubeDetailsUiCreator')
+    edit.find_method_def('addActionButtons')
+    edit.find_line(r' invoke-super .*', where='down')
+    edit.prepare_to_insert()
+    edit.add_invoke_entry('PowerCubeDetailsUiCreator_onActionButtonsTableCreated', 'p1')
     edit.save()
 
     #modify shader code before compiling it
@@ -286,14 +287,6 @@ def main():
     edit.replace_in_line('%d', '%,d')
     edit.save()
 
-    edit = edit_cls('OldPlayerStatusBar')
-    edit.find_line(r'(.+)\+%d AP(.+)$')
-    edit.replace_in_line('%d', '%,d')
-    edit.find_line(r'(.+)%d AP(.+)$')
-    edit.replace_in_line('%d', '%,d')
-    edit.find_line(r'(.+)%d XM(.+)$')
-    edit.replace_in_line('%d', '%,d')
-    edit.save()
     # privacy
     edit = edit_cls('AvatarPlayerStatusBar')
     edit.find_line(' invoke-interface {v0, v1}, Lcom/nianticproject/ingress/common/model/l;->a\(Ljava/lang/String;\)V')

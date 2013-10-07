@@ -37,6 +37,7 @@ public class Config {
     public static boolean vibration;
     public static boolean keepScreenOn;
     public static boolean changePortalInfoDialog;
+    public static boolean enablePowerCubesRecycle;
     public static boolean isPrivacyOn;
 
     public static UiVariant uiVariant;
@@ -74,6 +75,7 @@ public class Config {
         vibration = prefs.getBoolean("vibration", true);
         keepScreenOn = prefs.getBoolean("keepScreenOn", false);
         changePortalInfoDialog = prefs.getBoolean("changePortalInfoDialog", true);
+        enablePowerCubesRecycle = prefs.getBoolean("enablePowerCubesRecycle", true);
         isPrivacyOn = prefs.getBoolean("isPrivacyOn", false);
 
         uiVariant = UiVariant.byName.get(prefs.getString("uiVariant", "auto"));
@@ -117,6 +119,7 @@ public class Config {
         e.putBoolean("vibration", vibration);
         e.putBoolean("keepScreenOn", keepScreenOn);
         e.putBoolean("changePortalInfoDialog", changePortalInfoDialog);
+        e.putBoolean("enablePowerCubesRecycle", enablePowerCubesRecycle);
         e.putBoolean("isPrivacyOn", isPrivacyOn);
 
         e.putString("uiVariant", uiVariant.name);
