@@ -197,6 +197,7 @@ public class ModItemsActivity extends BaseSubActivity {
         int mediaCnt = 0;
         boolean itemHandled;
         int keysNumber = 0;
+        int distinctKeysNumber = 0;
         int media[] = new int[LEVEL_COUNT];
         for (IndistinguishableItems items : IndistinguishableItems.fromItemsByPlayerInfo(null, Mod.cache.getInventory())) {
             itemHandled = false;
@@ -235,6 +236,7 @@ public class ModItemsActivity extends BaseSubActivity {
                     break;
                 case PORTAL_LINK_KEY:
                     keysNumber += count;
+                    distinctKeysNumber += 1;
                     continue;
                 case RES_SHIELD:
                 case FORCE_AMP:
@@ -269,7 +271,7 @@ public class ModItemsActivity extends BaseSubActivity {
         
         long xm = Mod.world.getPlayerModel().getCurrentXM();
         sumLabel.setText(String.format(Locale.US, "Items: %,d - XM: %,d", sum, xm));
-        keysLabel.setText("Keys:  " + keysNumber);
+        keysLabel.setText("Keys:  " + keysNumber + " for " + distinctKeysNumber + " distinct portals");
     }
 
     private static String formatValue(int value) {

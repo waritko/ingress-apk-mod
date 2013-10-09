@@ -74,7 +74,7 @@ public class Config {
         chatTimeFormat = prefs.getInt("chatTimeFormat", 0);
         vibration = prefs.getBoolean("vibration", true);
         keepScreenOn = prefs.getBoolean("keepScreenOn", false);
-        changePortalInfoDialog = prefs.getBoolean("changePortalInfoDialog", true);
+        changePortalInfoDialog = prefs.getBoolean("changePortalInfoDialog", false);
         enablePowerCubesRecycle = prefs.getBoolean("enablePowerCubesRecycle", true);
         isPrivacyOn = prefs.getBoolean("isPrivacyOn", false);
 
