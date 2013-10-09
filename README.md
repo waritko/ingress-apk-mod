@@ -35,6 +35,33 @@ Other features:
 
 News
 ----
+08.10.2013 – Migrated to 1.37.2
+
+06.10.2013 – Added distinst keys to [ITEMS] tab. Thank you, r41d!
+
+06.10.2013 – Added privacy mode (Your nick will be hidden after restart). Thank you, DeKaN!
+
+05.10.2013 – Added option to disable Recycle button for power cubes
+
+26.09.2013 – Migrated to 1.36.0
+
+18.09.2013 – Added option to tune GPS lock timeout. Thank you again, mar-v-in!
+
+14.09.2013 – Solved some lowres issues
+
+13.09.2013 – Migrated to 1.35.1
+
+08.09.2013 – Added summaries to [ITEMS] screen. Thank you, r41d!
+
+02.09.2013 – Lowres skins has been recovered. Thank you again, mar-v-in!
+
+02.09.2013 – Added option to disable XM glow and shield particles. Thank you, mar-v-in!
+
+31.08.2013 – Added Ultra Strike support for [ITEMS] screen. Thank you, DeKaN!
+
+31.08.2013 – Migrated to 1.34.0
+
+17.08.2013 – Fixed a few bugs
 
 15.08.2013 – Migrated to 1.33.0
 
