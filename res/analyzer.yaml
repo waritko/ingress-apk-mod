@@ -56,6 +56,11 @@ broot.ingress.mod.Entry:
 
 ### MODEL
 
+com.nianticproject.ingress.common.CommChannel:
+  is_enum: true
+  
+  find_by_string: '" is an unknown channel ID"'
+
 com.nianticproject.ingress.common.model.GameState:
   is_real_name: true
 
