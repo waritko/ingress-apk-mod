@@ -101,12 +101,6 @@ com.nianticproject.ingress.gameentity.GameEntity:
 com.nianticproject.ingress.gameentity.EntityComponent:
   obf_name: com.nianticproject.ingress.gameentity.a
 
-#com.nianticproject.ingress.common.gameentity.PlayerModelUtils:
-#  methods:
-#    getDefaultResonatorToDeploy: [a, $GameEntity, $PlayerModel, Lcom/nianticproject/ingress/gameentity/components/Portal;]
-
-#  find_by_method: getDefaultResonatorToDeploy
-
 com.nianticproject.ingress.gameentity.components.ItemRarity:
   is_enum: true
   find_by_string: EXTREMELY_RARE
@@ -684,7 +678,7 @@ com.nianticproject.ingress.content.CommsLoader:
 
 com.nianticproject.ingress.content.CommsData:
   methods:
-    addMessage: [a, V, $Context, $String, '[B', Z, J, I, $String, I]
+    addMessage: [a, V, $Context, $CommChannel, $String, '[B', Z, J, I, $String, I]
 
   find:
     - [by_string, false, true, "Massive plext in CommsData"]

@@ -190,7 +190,7 @@ class Analyzer:
     def find_class_by_method(self, cls, pkg, method_name, method_modif='.+'):
         m = cls.methods[method_name]
         return self.find_classes_by_string(r'^%s\.method %s %s\(%s\)%s$' % (
-            LINE_PREFIX, method_modif, m[0], ''.join(self.obj.expr_type_multi(*m[2:])), self.obj.expr_type(m[1])), pkg)
+            LINE_PREFIX, method_modif, m[0], ''.join(self.obj.expr_type_multi(*m[2:])).replace('[', r'\['), self.obj.expr_type(m[1])), pkg)
 
     def find_class_by_super(self, cls, pkg, other):
         return self.find_classes_by_string(r'^%s\.super %s$' % (LINE_PREFIX, self.obj.expr_type(other)), pkg)
