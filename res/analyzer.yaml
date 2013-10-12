@@ -683,7 +683,13 @@ com.nianticproject.ingress.content.CommsLoader:
   find_by_string: "CommsLoader.deserializeNoneOnFail"
 
 com.nianticproject.ingress.content.CommsData:
-  find_by_string: "Massive plext in CommsData"
+  methods:
+    addMessage: [a, V, $Context, $String, '[B', Z, J, I, $String, I]
+
+  find:
+    - [by_string, false, true, "Massive plext in CommsData"]
+    - [by_method, false, true, addMessage]
+
 
 ### FRAMEWORK
 android.view.View:
