@@ -39,6 +39,7 @@ public class Config {
     public static boolean changePortalInfoDialog;
     public static boolean enablePowerCubesRecycle;
     public static boolean isPrivacyOn;
+    public static boolean needInviteNagBlock;
 
     public static UiVariant uiVariant;
 
@@ -77,6 +78,7 @@ public class Config {
         changePortalInfoDialog = prefs.getBoolean("changePortalInfoDialog", false);
         enablePowerCubesRecycle = prefs.getBoolean("enablePowerCubesRecycle", true);
         isPrivacyOn = prefs.getBoolean("isPrivacyOn", false);
+        needInviteNagBlock = prefs.getBoolean("needInviteNagBlock", false);
 
         uiVariant = UiVariant.byName.get(prefs.getString("uiVariant", "auto"));
         if (uiVariant == null) {
@@ -121,6 +123,7 @@ public class Config {
         e.putBoolean("changePortalInfoDialog", changePortalInfoDialog);
         e.putBoolean("enablePowerCubesRecycle", enablePowerCubesRecycle);
         e.putBoolean("isPrivacyOn", isPrivacyOn);
+        e.putBoolean("needInviteNagBlock", needInviteNagBlock);
 
         e.putString("uiVariant", uiVariant.name);
 

@@ -297,5 +297,12 @@ def main():
     edit.add_line(' :lbl_privacy_disabled')
     edit.save()
 
+    # invite nag reminder
+    edit = edit_cls('RecruitReminder')
+    edit.find_line(' invoke-virtual {v1}, Lcom/nianticproject/ingress/knobs/ClientFeatureKnobBundle;->h\(\)Z')
+    edit.comment_line()
+    edit.add_invoke_entry('isInviteNagBlockEnabled')
+    edit.save()
+
 if __name__ == '__main__':
     main()
