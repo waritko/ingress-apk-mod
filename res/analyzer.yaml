@@ -51,6 +51,7 @@ broot.ingress.mod.Entry:
     shouldDrawScannerObject: [null, Z]
     vibrationEnabled: [null, Z]
     isPrivacyEnabled: [null, Z]
+    isInviteNagBlockEnabled: [null, Z]
 
     CommsAdapter_getDateFormat: [null, $SimpleDateFormat]
 
@@ -303,6 +304,9 @@ com.nianticproject.ingress.common.ui.widget.Spectrograph:
     draw: [draw, V, Lcom/badlogic/gdx/graphics/g2d/SpriteBatch;, F]
 
   is_real_name: true
+
+com.nianticproject.ingress.common.recruit.RecruitReminder:
+  obf_name: com.nianticproject.ingress.common.m.e
 
 ### SUB ACTIVIVITY
 
