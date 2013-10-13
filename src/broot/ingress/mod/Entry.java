@@ -279,6 +279,10 @@ public class Entry {
         return Config.isPrivacyOn;
     }
 
+    public static boolean isInviteNagBlockEnabled() {
+        return Config.needInviteNagBlock;
+    }
+
     public static SimpleDateFormat CommsAdapter_getDateFormat() {
         switch (Config.chatTimeFormat) {
             case 0:  return tf12;

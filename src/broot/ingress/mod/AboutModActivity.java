@@ -251,6 +251,13 @@ public class AboutModActivity extends BaseSubActivity {
                         restartItem.descLabel.setText("Restart is recommended");
                     }
                 });
+                uiTweaksItem.addButton("Block invite nag", "", new ClickListener() {
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        Config.needInviteNagBlock = !Config.needInviteNagBlock;
+                        updateUiTweaksValues(true);
+                    }
+                });
                 addItem(uiTweaksItem);
 
                 addItem(uiVariantItem = new ListItem(skin, "UI variant", "", "Toggle", new ClickListener() {
@@ -375,6 +382,7 @@ public class AboutModActivity extends BaseSubActivity {
         uiTweaksItem.buttons.get(9).setText(Config.changePortalInfoDialog ? "ON" : "OFF");
         uiTweaksItem.buttons.get(10).setText(Config.enablePowerCubesRecycle ? "ON" : "OFF");
         uiTweaksItem.buttons.get(11).setText(Config.isPrivacyOn ? "ON" : "OFF");
+        uiTweaksItem.buttons.get(12).setText(Config.needInviteNagBlock ? "ON" : "OFF");
     }
 
     private void updateUiVariantValue() {
