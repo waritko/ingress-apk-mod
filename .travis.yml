@@ -28,6 +28,7 @@ script:
   - git config --global user.email ""
   - git config --global user.name "Ingress apk mod"
   - python bin/import_apk.py ingress-latest.apk
+  - python bin/prepare_lowres.py
   - python bin/release.py
 after_success:
   - "travis-artifacts upload --path ingress-latest-broot-*.apk --target-path builds" 
