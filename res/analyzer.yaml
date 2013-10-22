@@ -334,11 +334,16 @@ com.nianticproject.ingress.common.ui.SubActivityManager:
 com.nianticproject.ingress.common.ui.BaseSubActivity:
   methods:
     getName: [d, $String]
-    getRenderer: [K, $UiRenderer]
+    getRenderer: [L, $UiRenderer]
     onResume: [a, V]
     onPause: [e, V]
 
-  find_super_of: $DeviceActivity
+  find:
+#    - [by_super,  false, true, $DeviceActivity]
+    - [by_method, false, true, getName]
+    - [by_method, false, true, getRenderer]
+    - [by_method, false, true, onResume]
+    - [by_method, false, true, onPause]
 
 com.nianticproject.ingress.common.ui.SubActivityApplicationListener:
   methods:
