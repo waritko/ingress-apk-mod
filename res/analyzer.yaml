@@ -53,6 +53,7 @@ broot.ingress.mod.Entry:
     shouldDrawScannerObject: [null, Z]
     vibrationEnabled: [null, Z]
     isPrivacyEnabled: [null, Z]
+    isInviteNagBlockEnabled: [null, Z]
 
     CommsAdapter_getDateFormat: [null, $SimpleDateFormat]
 
@@ -86,6 +87,11 @@ com.nianticproject.ingress.shared.rpc.RpcResult:
 #    - [by_field, false, true, player]
 
 ### MODEL
+
+com.nianticproject.ingress.common.CommChannel:
+  is_enum: true
+  
+  find_by_string: '" is an unknown channel ID"'
 
 com.nianticproject.ingress.common.model.GameState:
   is_real_name: true
@@ -126,12 +132,6 @@ com.nianticproject.ingress.gameentity.GameEntity:
 
 com.nianticproject.ingress.gameentity.EntityComponent:
   obf_name: com.nianticproject.ingress.gameentity.a
-
-#com.nianticproject.ingress.common.gameentity.PlayerModelUtils:
-#  methods:
-#    getDefaultResonatorToDeploy: [a, $GameEntity, $PlayerModel, Lcom/nianticproject/ingress/gameentity/components/Portal;]
-
-#  find_by_method: getDefaultResonatorToDeploy
 
 com.nianticproject.ingress.gameentity.components.ItemRarity:
   is_enum: true
@@ -339,6 +339,9 @@ com.nianticproject.ingress.common.ui.widget.Spectrograph:
 
   is_real_name: true
 
+com.nianticproject.ingress.common.recruit.RecruitReminder:
+  obf_name: com.nianticproject.ingress.common.m.e
+
 ### SUB ACTIVIVITY
 
 com.nianticproject.ingress.common.ui.SubActivity:
@@ -365,11 +368,15 @@ com.nianticproject.ingress.common.ui.SubActivityManager:
 com.nianticproject.ingress.common.ui.BaseSubActivity:
   methods:
     getName: [d, $String]
-    getRenderer: [K, $UiRenderer]
+    getRenderer: [L, $UiRenderer]
     onResume: [a, V]
     onPause: [e, V]
 
-  find_super_of: $DeviceActivity
+  find:
+    - [by_method, false, true, getName]
+    - [by_method, false, true, getRenderer]
+    - [by_method, false, true, onResume]
+    - [by_method, false, true, onPause]
 
 com.nianticproject.ingress.common.ui.SubActivityApplicationListener:
   methods:
@@ -712,7 +719,13 @@ com.nianticproject.ingress.content.CommsLoader:
   find_by_string: "CommsLoader.deserializeNoneOnFail"
 
 com.nianticproject.ingress.content.CommsData:
-  find_by_string: "Massive plext in CommsData"
+  methods:
+    addMessage: [a, V, $Context, $CommChannel, $String, '[B', Z, J, I, $String, I]
+
+  find:
+    - [by_string, false, true, "Massive plext in CommsData"]
+    - [by_method, false, true, addMessage]
+
 
 ### FRAMEWORK
 android.view.View:
