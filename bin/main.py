@@ -299,7 +299,7 @@ def main():
 
     # invite nag reminder
     edit = edit_cls('RecruitReminder')
-    edit.find_line(' invoke-virtual {v1}, Lcom/nianticproject/ingress/knobs/ClientFeatureKnobBundle;->h\(\)Z')
+    edit.find_line(' invoke-virtual {v1}, Lcom/nianticproject/ingress/knobs/ClientFeatureKnobBundle;->g\(\)Z')
     edit.comment_line()
     edit.add_invoke_entry('isInviteNagBlockEnabled')
     edit.save()

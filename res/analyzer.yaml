@@ -339,7 +339,6 @@ com.nianticproject.ingress.common.ui.BaseSubActivity:
     onPause: [e, V]
 
   find:
-#    - [by_super,  false, true, $DeviceActivity]
     - [by_method, false, true, getName]
     - [by_method, false, true, getRenderer]
     - [by_method, false, true, onResume]
